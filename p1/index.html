@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CDMX Arrival Companion — Merking Digital Technology</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#1c1813; --charcoal:#241f18; --paper:#f6f1e7; --card:#fffdf9;
+  --gold:#c9a25e; --gold-soft:#e7cf9a; --gold-deep:#9a7a3e;
+  --muted:#6f6558; --line:#e7dcc8; --green:#5c7a5e; --red:#a8543f;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;font-size:15.5px}
+img{max-width:100%;display:block}
+a{color:var(--gold-deep)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ===== Top bar ===== */
+.topbar{background:var(--charcoal);color:var(--gold-soft);border-bottom:1px solid #3a3226}
+.topbar .wrap{display:flex;align-items:center;gap:12px;padding:14px 22px}
+.topbar img{width:38px;height:38px;border-radius:6px;object-fit:cover}
+.topbar .brand{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:14px}
+.topbar .brand small{display:block;font-family:var(--sans);font-weight:400;letter-spacing:.22em;font-size:10px;color:#b9a888;margin-top:2px}
+.topbar .tag{margin-left:auto;font-size:12px;color:#cbb98f;letter-spacing:.08em}
+.lang{display:flex;gap:4px;margin-left:10px}
+.lang button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-size:11px;padding:4px 11px;border-radius:12px;cursor:pointer;font-family:var(--sans)}
+.lang button.active{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+
+/* ===== Hero ===== */
+.hero{position:relative;color:#fff;min-height:440px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,10,.35) 0%,rgba(20,16,10,.55) 55%,rgba(20,16,10,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:60px 22px 40px}
+.hero .eyebrow{color:var(--gold-soft);letter-spacing:.3em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.12;max-width:720px}
+.hero p.sub{margin-top:16px;font-size:17px;color:#efe7d8;max-width:620px;font-weight:300}
+.hero .meta{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap;font-size:13px;color:#d9c9a6}
+.hero .meta span b{color:#fff}
+
+/* ===== Nav chips ===== */
+.chips{position:sticky;top:0;z-index:30;background:var(--charcoal);border-top:1px solid #3a3226}
+.chips .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 22px;scrollbar-width:thin}
+.chips button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-family:var(--sans);font-size:13px;padding:8px 14px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:.2s}
+.chips button.active,.chips button:hover{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+
+/* ===== Views ===== */
+.view{display:none;padding:44px 0 70px}
+.view.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2.section-title{font-family:var(--serif);font-size:30px;font-weight:700;margin-bottom:8px}
+.section-lede{color:var(--muted);max-width:680px;margin-bottom:30px;font-size:16px}
+h3{font-family:var(--serif);font-size:21px;margin:26px 0 12px}
+
+/* ===== Cards ===== */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(80,62,32,.07)}
+.card h4{font-family:var(--serif);font-size:18px;margin-bottom:6px}
+.card .place{color:var(--gold-deep);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.card p{color:#4c443a;font-size:14px}
+.card .rent{display:inline-block;margin-top:12px;background:#f2e8d3;color:var(--gold-deep);border-radius:8px;padding:5px 10px;font-size:12.5px;font-weight:600}
+.card ul{margin:10px 0 0 18px;color:#4c443a;font-size:14px}
+.card ul li{margin:5px 0}
+.tip{border-left:3px solid var(--gold);background:#fbf4e4;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#5a4f3d;font-size:14px}
+.warn{border-left:3px solid var(--red);background:#fbeee9;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#6b3d31;font-size:14px}
+
+/* ===== Media ===== */
+.figure{border-radius:14px;overflow:hidden;margin:20px 0;border:1px solid var(--line)}
+.figure img{width:100%;height:280px;object-fit:cover}
+.figure figcaption{padding:10px 16px;font-size:12.5px;color:var(--muted);background:var(--card)}
+.audio-box{background:var(--charcoal);color:var(--gold-soft);border-radius:14px;padding:18px 20px;margin:18px 0}
+.audio-box .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.audio-box audio{width:100%;margin-top:6px}
+.audio-box audio::-webkit-media-controls-panel{background:#3a3122}
+
+/* ===== Tables ===== */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#f2e8d3;font-family:var(--serif);font-size:13.5px;color:var(--charcoal)}
+td .es{color:var(--gold-deep);font-weight:600}
+td .en{color:#4c443a}
+
+/* ===== Checklist ===== */
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.check-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.check-item:last-child{border-bottom:none}
+.check-item input{margin-top:5px;width:17px;height:17px;accent-color:var(--gold-deep)}
+.check-item.done span{text-decoration:line-through;color:var(--muted)}
+.progress{height:8px;background:#ece1cb;border-radius:6px;overflow:hidden;margin:14px 0 6px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));width:0;transition:.3s}
+.progress-note{font-size:13px;color:var(--muted)}
+
+/* ===== Budget calc ===== */
+.calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.calc label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+.calc input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-family:var(--sans);font-size:15px;background:#fff}
+.budget-out{margin-top:24px;background:var(--charcoal);color:#fff;border-radius:14px;padding:26px;text-align:center}
+.budget-out .num{font-family:var(--serif);font-size:38px;color:var(--gold-soft)}
+.budget-out p{color:#cdbd97;font-size:13px;margin-top:6px}
+
+/* ===== Steps ===== */
+.steps{display:grid;gap:16px;counter-reset:step}
+.step{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.step .n{flex:0 0 42px;height:42px;border-radius:50%;background:var(--gold);color:var(--charcoal);font-family:var(--serif);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center}
+.step h4{font-family:var(--serif);margin-bottom:6px}
+.step p{font-size:14px;color:#4c443a}
+
+/* ===== Footer ===== */
+footer{background:var(--charcoal);color:#b9a888;padding:34px 0;font-size:12.5px}
+footer .wrap{display:grid;gap:10px}
+footer .brand{font-family:var(--serif);color:var(--gold-soft);letter-spacing:.12em}
+.disclaimer{background:#fbf4e4;border:1px dashed var(--gold);border-radius:12px;padding:16px 18px;color:#6b5c3e;font-size:12.5px;margin-top:20px}
+.btn{display:inline-block;background:var(--gold);color:var(--charcoal);border:none;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-family:var(--sans);font-size:14px;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid var(--gold);color:var(--gold-deep)}
+@media print{.chips,.topbar,.btn,.lang{display:none!important}.view{display:block!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <img src="assets/logo.jpg" alt="MDT logo">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY<small>CROSS-CULTURAL LIVING · MEXICO CITY</small></div>
+    <div class="tag" data-i18n="tag">Product 01 · Arrival Companion</div>
+    <div class="lang">
+      <button data-lang="en" onclick="applyLang('en')">EN</button>
+      <button data-lang="zh" onclick="applyLang('zh')">中文</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <img class="bg" src="assets/hero.jpg" alt="Roma Norte street, Mexico City">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">The 30-Day CDMX Onboarding System</div>
+    <h1 data-i18n="title">CDMX Arrival Companion</h1>
+    <p class="sub" data-i18n="sub">Your practical, high-end roadmap for the first weeks in Mexico City — neighborhoods, transport, money, food, safety and a Spanish survival phrasebook with native-style audio.</p>
+    <div class="meta">
+      <span data-i18n="meta1">Format: <b>Interactive digital guide</b></span>
+      <span data-i18n="meta2">Includes: <b>5 audio packs · 8 neighborhood profiles · budget planner · checklist</b></span>
+      <span data-i18n="meta3">Access: <b>6 months from purchase</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="chips">
+  <div class="wrap" id="chips">
+    <button data-view="welcome" class="active" data-i18n="nav.welcome">Welcome</button>
+    <button data-view="hours" data-i18n="nav.hours">First 72 Hours</button>
+    <button data-view="neighborhoods" data-i18n="nav.neighborhoods">Neighborhood Matchmaker</button>
+    <button data-view="transport" data-i18n="nav.transport">Getting Around</button>
+    <button data-view="money" data-i18n="nav.money">Money &amp; Connectivity</button>
+    <button data-view="daily" data-i18n="nav.daily">Food &amp; Daily Life</button>
+    <button data-view="safety" data-i18n="nav.safety">Safety &amp; Health</button>
+    <button data-view="phrases" data-i18n="nav.phrases">Spanish Phrasebook</button>
+    <button data-view="budget" data-i18n="nav.budget">Budget Planner</button>
+    <button data-view="checklist" data-i18n="nav.checklist">Arrival Checklist</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ WELCOME ============ -->
+<section class="view active" id="welcome">
+  <h2 class="section-title" data-i18n="w.title">Welcome to Mexico City</h2>
+  <p class="section-lede" data-i18n="w.lede">Millions of visitors and newcomers settle into CDMX every year. This Companion distills what experienced residents wish they had known before landing — organized so you can act on it in order, without guesswork.</p>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="w.audio">▶ Welcome audio · 35 sec</div>
+    <audio controls preload="none" src="assets/audio/welcome.mp3"></audio>
+  </div>
+
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="w.c1h">For short stays</h4><p data-i18n="w.c1p">Tourists, trial movers and digital nomads spending one to six months in the city.</p></div>
+    <div class="card"><h4 data-i18n="w.c2h">For first impressions</h4><p data-i18n="w.c2p">Neighborhood fit, honest budgets and the everyday systems that make a big city feel manageable.</p></div>
+    <div class="card"><h4 data-i18n="w.c3h">Zero jargon</h4><p data-i18n="w.c3p">Plain English, clear prices, and a phrasebook that gets you through real encounters on the street.</p></div>
+  </div>
+
+  <h3 data-i18n="w.h3">What you'll find inside</h3>
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="w.c4h">First 72 Hours</h4><p data-i18n="w.c4p">Day-by-day playbook for connectivity, cash, transport cards and home systems before your first week ends.</p></div>
+    <div class="card"><h4 data-i18n="w.c5h">Neighborhood Matchmaker</h4><p data-i18n="w.c5p">Eight expat-relevant colonias compared by vibe, rent range, walkability and who each one suits.</p></div>
+    <div class="card"><h4 data-i18n="w.c6h">Transport &amp; money</h4><p data-i18n="w.c6p">Metro, Metrobús, bikes, ride apps, airport transfers, ATM rules, SIM and eSIM options.</p></div>
+    <div class="card"><h4 data-i18n="w.c7h">Phrasebook with audio</h4><p data-i18n="w.c7p">Forty+ survival phrases in four audio packs — basics, transport, food and emergencies.</p></div>
+  </div>
+
+  <div class="tip" data-i18n="w.tip"><b>How to use this guide:</b> Start with the First 72 Hours before you fly. Browse the Neighborhood Matchmaker once you know your rough dates. Keep the Checklist open on your phone during arrival week.</div>
+
+  <h3 data-i18n="tr.h">What you can expect</h3>
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="tr.h1">6-month access</h4><p data-i18n="tr.p1">Your guide stays open for six months from purchase; the access link and files arrive by email.</p></div>
+    <div class="card"><h4 data-i18n="tr.h2">English / Chinese</h4><p data-i18n="tr.p2">Toggle the page language anytime; the guide and audio phrasebook are presented in both languages.</p></div>
+    <div class="card"><h4 data-i18n="tr.h3">Instant digital delivery</h4><p data-i18n="tr.p3">A self-serve digital system with no shipping; access and technical issues are handled per Whop policy.</p></div>
+  </div>
+</section>
+
+<!-- ============ 72 HOURS ============ -->
+<section class="view" id="hours">
+  <h2 class="section-title" data-i18n="h.title">Your First 72 Hours</h2>
+  <p class="section-lede" data-i18n="h.lede">A simple sequence that covers the things people most often delay: being connected, having local cash, knowing how to move, and locating everyday services near where you stay.</p>
+
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div>
+      <h4 data-i18n="h.s1h">Day 1 · Connectivity &amp; cash</h4>
+      <p data-i18n="h.s1p">Buy a prepaid Telcel or AT&amp;T SIM at any OXXO store — bring your passport, allow roughly 200–300 MXN for 20+ GB, activated in minutes. If your phone supports it, install an eSIM before landing to be online at the airport. Withdraw pesos from a bank-branch or mall ATM (BBVA, Banorte and similar), never a standalone corner machine. Always <b>decline</b> the machine's offer to convert to your home currency — that dynamic conversion typically costs 5–8%.</p>
+    </div></div>
+    <div class="step"><div class="n">2</div><div>
+      <h4 data-i18n="h.s2h">Day 2 · Movement</h4>
+      <p data-i18n="h.s2p">Buy the <b>Tarjeta de Movilidad Integrada</b> (MXN 15) at any metro station — one card works on Metro, Metrobús, Cablebús, trolleybuses and Ecobici. Install Uber, DiDi (often 10–20% cheaper) and Cabify, plus Rappi for delivery. Walk the perimeter of your colonia in daylight: you'll learn more in an hour than from any guide.</p>
+    </div></div>
+    <div class="step"><div class="n">3</div><div>
+      <h4 data-i18n="h.s3h">Day 3 · Home systems</h4>
+      <p data-i18n="h.s3p">Confirm your water-delivery rhythm with your host — most buildings have a regular garrafón truck, around 45–60 MXN per 20-liter jug. Locate your nearest mercado, a walk-in pharmacy clinic (Farmacias del Ahorro or Guadalajara, consultorio around 50–100 MXN) and a laundry (roughly 20–30 MXN per kilo — many rentals have no washer, and that's normal here).</p>
+    </div></div>
+  </div>
+
+  <div class="warn" data-i18n="h.warn"><b>Altitude note:</b> CDMX sits at 2,240 m (7,350 ft). Mild breathlessness and poorer sleep are common for the first 2–5 days. Hydrate well, go easy on alcohol and intense workouts in week one.</div>
+</section>
+
+<!-- ============ NEIGHBORHOODS ============ -->
+<section class="view" id="neighborhoods">
+  <h2 class="section-title" data-i18n="n.title">Neighborhood Matchmaker</h2>
+  <p class="section-lede" data-i18n="n.lede">The city is a collection of walkable islands; where you base yourself shapes daily life more than almost any other choice. Rent figures are approximate furnished one-bedroom ranges in USD per month, 2026 samples.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="place" data-i18n="n.c1place">Central · Creative Hub</div>
+      <h4>Roma Norte</h4>
+      <p data-i18n="n.c1p">The default landing zone for a reason: art-deco streets, an extraordinary density of cafés, coworking and restaurants, and the largest concentration of other internationals.</p>
+      <ul><li data-i18n="n.c1l1">Best for: first-timers, walkability, remote work</li><li data-i18n="n.c1l2">Caution: pricey and increasingly tourist-heavy</li></ul>
+      <span class="rent">1BR furnished · $900–1,400 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c2place">Leafy · Residential</div>
+      <h4>Condesa</h4>
+      <p data-i18n="n.c2p">Wrapped around Parque México and Parque España, slightly greener and calmer than Roma, with strong café culture and a dog-friendly, design-media crowd.</p>
+      <ul><li data-i18n="n.c2l1">Best for: parks, a quieter base near the action</li><li data-i18n="n.c2l2">Caution: rents match Roma; busy evenings on weekends</li></ul>
+      <span class="rent">1BR furnished · $900–1,400 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c3place">Upscale · Embassy District</div>
+      <h4>Polanco</h4>
+      <p data-i18n="n.c3p">The affluent quarter: embassies, luxury retail on Masaryk, fine dining, polished streets and Chapultepec Park next door. The safest-feeling option for families and executives.</p>
+      <ul><li data-i18n="n.c3l1">Best for: safety, services, families, corporate stays</li><li data-i18n="n.c3l2">Caution: very expensive; quieter nightlife</li></ul>
+      <span class="rent">1BR furnished · $1,200–2,000+ / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c4place">Central · Value</div>
+      <h4>Juárez / Cuauhtémoc</h4>
+      <p data-i18n="n.c4p">Between Roma and the historic center, beside Paseo de la Reforma, revitalizing fast and a notch cheaper, with good metro access and a lively bar-restaurant scene.</p>
+      <ul><li data-i18n="n.c4l1">Best for: central location, value near Roma</li><li data-i18n="n.c4l2">Caution: quality varies block by block — inspect street level</li></ul>
+      <span class="rent">1BR furnished · $700–1,000 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c5place">South · Village Feel</div>
+      <h4>Coyoacán</h4>
+      <p data-i18n="n.c5p">Bohemian heart of the south: cobblestone plazas, colorful markets, Frida Kahlo's legacy and a distinctly Mexican, less gentrified atmosphere. Rents are lower and food markets are spectacular.</p>
+      <ul><li data-i18n="n.c5l1">Best for: culture, slower life, longer-stay families</li><li data-i18n="n.c5l2">Caution: longer commute north; fewer coworking spots</li></ul>
+      <span class="rent">1BR furnished · $550–900 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c6place">Residential · Local Steady</div>
+      <h4>Del Valle</h4>
+      <p data-i18n="n.c6p">Middle-class residential Benito Juárez borough: leafy streets, everyday services, quiet evenings and a reputation for feeling safe. Fewer foreigners, less international flavor.</p>
+      <ul><li data-i18n="n.c6l1">Best for: quiet local life, space for the money</li><li data-i18n="n.c6l2">Caution: limited expat amenities and nightlife</li></ul>
+      <span class="rent">1BR furnished · $700–1,000 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c7place">Local Favorite · Connected</div>
+      <h4>Narvarte</h4>
+      <p data-i18n="n.c7p">The neighborhood locals recommend when asked for "something other than Polanco, Condesa and Roma." Famous taquerías, strong metro and Metrobús links to Roma and downtown, cheaper restaurants.</p>
+      <ul><li data-i18n="n.c7l1">Best for: value, authentic daily life, food</li><li data-i18n="n.c7l2">Caution: less polished; more Spanish on the street</li></ul>
+      <span class="rent">1BR furnished · $700–1,000 / mo</span>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="n.c8place">Roma's Calmer Neighbor</div>
+      <h4>Roma Sur</h4>
+      <p data-i18n="n.c8p">Less crowded than Roma Norte, more residential, with the same easy access and a local texture. A sensible value choice for stays of a month or more.</p>
+      <ul><li data-i18n="n.c8l1">Best for: budget-conscious longer leases</li><li data-i18n="n.c8l2">Caution: street-level caution applies like anywhere busy</li></ul>
+      <span class="rent">1BR furnished · $700–1,000 / mo</span>
+    </div>
+  </div>
+
+  <div class="figure"><img src="assets/nbhd.jpg" alt="Coyoacán plaza"><figcaption data-i18n="n.cap">Coyoacán — cobblestone plazas and colonial facades in the south of the city.</figcaption></div>
+</section>
+
+<!-- ============ TRANSPORT ============ -->
+<section class="view" id="transport">
+  <h2 class="section-title" data-i18n="t.title">Getting Around</h2>
+  <p class="section-lede" data-i18n="t.lede">You do not need a car in central CDMX. Traffic is punishing; the metro and ride apps cover almost every journey an arrival will make.</p>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="t.c1h">Metro</h4><p data-i18n="t.c1p">MXN 5 per ride, fast and extensive with free transfers between lines. Avoid valuables at rush hour; some cars are reserved for women and children.</p></div>
+    <div class="card"><h4 data-i18n="t.c2h">Metrobús</h4><p data-i18n="t.c2p">MXN 6 per ride, buses in dedicated lanes along the major avenues. Line 4 runs to the airport terminals.</p></div>
+    <div class="card"><h4 data-i18n="t.c3h">Ecobici</h4><p data-i18n="t.c3p">City bike-share — the quickest way around flat Roma, Condesa, Juárez and Polanco. One-day pass around MXN 134; annual pass around MXN 588.</p></div>
+    <div class="card"><h4 data-i18n="t.c4h">Ride apps</h4><p data-i18n="t.c4p">Uber, DiDi and Cabify are the normal way home at night. Short trips are cheap by US standards; DiDi is often 10–20% below Uber.</p></div>
+  </div>
+
+  <h3 data-i18n="t.h3">Airport arrivals</h3>
+  <table>
+    <tr><th data-i18n="t.th1">Route</th><th data-i18n="t.th2">Options</th><th data-i18n="t.th3">Approximate cost</th></tr>
+    <tr><td>MEX airport → Roma / Condesa</td><td data-i18n="t.r1o">Uber / DiDi, or an authorized yellow taxi from the official taxi booth</td><td>MXN 250–400</td></tr>
+    <tr><td>NLU (Felipe Ángeles) → central CDMX</td><td data-i18n="t.r2o">Significantly farther; taxi/ride app or the Mexicobus shuttle</td><td>MXN 600–900 by road</td></tr>
+  </table>
+
+  <div class="figure"><img src="assets/transport.jpg" alt="Bikes on a Roma avenue"><figcaption data-i18n="t.cap">Tree-lined avenues make cycling and walking easy in the central colonias.</figcaption></div>
+
+  <div class="warn" data-i18n="t.warn"><b>Never hail a street taxi.</b> Unofficial cabs carry a real express-kidnapping risk. Use registered booth taxis only, or a ride app every time.</div>
+</section>
+
+<!-- ============ MONEY ============ -->
+<section class="view" id="money">
+  <h2 class="section-title" data-i18n="m.title">Money &amp; Connectivity</h2>
+  <p class="section-lede" data-i18n="m.lede">Cards work across most shops and ride apps, but local cash remains essential at markets, street stalls and smaller fondas.</p>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m.c1h">Cash &amp; ATMs</h4><ul><li data-i18n="m.c1l1">Withdraw at bank-branch or mall ATMs</li><li data-i18n="m.c1l2">Decline currency-conversion offers at the machine</li><li data-i18n="m.c1l3">Carry small bills for markets and tips</li></ul></div>
+    <div class="card"><h4 data-i18n="m.c2h">SIM &amp; eSIM</h4><ul><li data-i18n="m.c2l1">Prepaid Telcel / AT&amp;T at OXXO, passport required</li><li data-i18n="m.c2l2">20+ GB plans roughly 200–300 MXN</li><li data-i18n="m.c2l3">eSIM can be installed before you land</li></ul></div>
+    <div class="card"><h4 data-i18n="m.c3h">Useful apps</h4><ul><li data-i18n="m.c3l1">Uber · DiDi · Cabify — rides</li><li data-i18n="m.c3l2">Rappi — delivery and errands</li><li data-i18n="m.c3l3">Google Maps — metro and walking routes</li></ul></div>
+    <div class="card"><h4 data-i18n="m.c4h">Exchange rate note</h4><p data-i18n="m.c4p">In November 2026 one US dollar bought roughly 18.5 pesos. Rates move monthly — check the day you budget, and avoid changing money at airport counters.</p></div>
+  </div>
+
+  <div class="tip" data-i18n="m.tip"><b>Card safety:</b> Keep your phone off the café table and out of back pockets; petty phone theft is the most common incident in expat areas, far more frequent than violent crime.</div>
+</section>
+
+<!-- ============ DAILY ============ -->
+<section class="view" id="daily">
+  <h2 class="section-title" data-i18n="d.title">Food &amp; Daily Life</h2>
+  <p class="section-lede" data-i18n="d.lede">CDMX is one of the world's great food cities at every price point. Here are the everyday systems newcomers ask about first.</p>
+
+  <div class="figure"><img src="assets/food.jpg" alt="Street food market stall"><figcaption data-i18n="d.cap">Markets and street stalls are the backbone of daily eating — bring small bills.</figcaption></div>
+
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="d.c1h">Street food</h4><p data-i18n="d.c1p">Tacos and antojitos from $2–4; follow stalls with long local lines and steam that stays fresh.</p></div>
+    <div class="card"><h4 data-i18n="d.c2h">Comida corrida</h4><p data-i18n="d.c2p">A fixed-price multi-course lunch at family fondas, around $5 — one of the great dining bargains anywhere.</p></div>
+    <div class="card"><h4 data-i18n="d.c3h">Casual &amp; mid-range</h4><p data-i18n="d.c3p">A casual meal around $8; a mid-range restaurant closer to $40; coffee ~$3, beer ~$2.50.</p></div>
+  </div>
+
+  <h3 data-i18n="d.h3a">Everyday services</h3>
+  <table>
+    <tr><th data-i18n="d.th1">Need</th><th data-i18n="d.th2">How it works</th></tr>
+    <tr><td data-i18n="d.r1k">Drinking water</td><td data-i18n="d.r1v">Do not drink tap water. Bottled water or the 20-liter garrafón jug delivered to your building; ~45–60 MXN per jug.</td></tr>
+    <tr><td data-i18n="d.r2k">Pharmacy clinic</td><td data-i18n="d.r2v">Farmacias del Ahorro / Guadalajara / Similares offer walk-in general consultations, roughly 30–100 MXN, medication from the attached pharmacy.</td></tr>
+    <tr><td data-i18n="d.r3k">Laundry</td><td data-i18n="d.r3v">Wash-and-fold by the kilo, ~20–30 MXN/kg. Many rentals have no washing machine.</td></tr>
+    <tr><td data-i18n="d.r4k">Groceries</td><td data-i18n="d.r4v">Local mercados for produce; supermarkets (Superama, Wal-Mart, Chedraui) and delivery apps for the rest.</td></tr>
+  </table>
+
+  <h3 data-i18n="d.h3b">Seasons &amp; weather</h3>
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="d.c4h">Dry season · Nov–Apr</h4><p data-i18n="d.c4p">Brilliant blue mornings, cool evenings, the best time for outdoor life.</p></div>
+    <div class="card"><h4 data-i18n="d.c5h">Rain season · May–Oct</h4><p data-i18n="d.c5p">Reliable afternoon downpours, usually 4–7 pm; carry a light rain jacket.</p></div>
+    <div class="card"><h4 data-i18n="d.c6h">Air quality · Feb–May</h4><p data-i18n="d.c6p">The smoggiest stretch; worst on calm days. June–January tends to be cleaner.</p></div>
+  </div>
+</section>
+
+<!-- ============ SAFETY ============ -->
+<section class="view" id="safety">
+  <h2 class="section-title" data-i18n="s.title">Safety &amp; Health</h2>
+  <p class="section-lede" data-i18n="s.lede">Hold two truths at once: the neighborhoods where visitors live are genuinely busy and safe by day, and the city rewards specific, simple caution.</p>
+
+  <div class="figure"><img src="assets/safety.jpg" alt="Well-lit residential street at dusk"><figcaption data-i18n="s.cap">Stick to busy, lit streets at night, especially in the historic center.</figcaption></div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="s.c1h">Everyday rules</h4><ul><li data-i18n="s.c1l1">Ride apps at night; never street-hail taxis</li><li data-i18n="s.c1l2">ATMs inside banks or malls only</li><li data-i18n="s.c1l3">Phone away from tables and back pockets</li><li data-i18n="s.c1l4">Stick to busy, lit streets after dark</li><li data-i18n="s.c1l5">Women should take women-only metro cars at night when possible</li></ul></div>
+    <div class="card"><h4 data-i18n="s.c2h">Emergency numbers</h4><ul><li data-i18n="s.c2l1"><b>911</b> — police, ambulance, fire (national emergency)</li><li data-i18n="s.c2l2">Locales are staffed in Spanish; keep your hotel address saved offline</li><li data-i18n="s.c2l3">Embassy/consulate contact details belong in your offline document folder</li></ul></div>
+  </div>
+
+  <h3 data-i18n="s.h3">Healthcare setup</h3>
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="s.c3h">Walk-in care</h4><p data-i18n="s.c3p">Pharmacy consultorios handle minor issues without an appointment. For anything more serious, the city's private hospitals are widely used by expats.</p></div>
+    <div class="card"><h4 data-i18n="s.c4h">Hospitals to know</h4><p data-i18n="s.c4p">Hospital ABC (Observatorio / Santa Fe), Hospital Ángeles (multiple locations), Médica Sur (Tlalpan). Compare international travel or health insurance before you arrive.</p></div>
+  </div>
+
+  <div class="tip" data-i18n="s.tip"><b>Earthquakes:</b> CDMX has an early-warning system that gives 30–90 seconds of notice. On alert: drop, cover, hold on; identify the safest spot in your accommodation on day one, and keep footwear near the bed.</div>
+</section>
+
+<!-- ============ PHRASES ============ -->
+<section class="view" id="phrases">
+  <h2 class="section-title" data-i18n="p.title">Spanish Survival Phrasebook</h2>
+  <p class="section-lede" data-i18n="p.lede">Four audio packs cover the situations you'll actually meet. Listen on the way to the airport; the table below follows each pack phrase by phrase.</p>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="p.a1">▶ Pack 1 · Basics &amp; greetings</div>
+    <audio controls preload="none" src="assets/audio/phrases-basics.mp3"></audio>
+  </div>
+  <table>
+    <tr><th>Spanish</th><th class="ph-en">English</th></tr>
+    <tr><td><span class="es">Hola</span></td><td><span class="en" data-i18n="p.b1">Hello</span></td></tr>
+    <tr><td><span class="es">Buenos días</span></td><td><span class="en" data-i18n="p.b2">Good morning</span></td></tr>
+    <tr><td><span class="es">Buenas tardes</span></td><td><span class="en" data-i18n="p.b3">Good afternoon</span></td></tr>
+    <tr><td><span class="es">¿Cómo está?</span></td><td><span class="en" data-i18n="p.b4">How are you?</span></td></tr>
+    <tr><td><span class="es">Mucho gusto</span></td><td><span class="en" data-i18n="p.b5">Nice to meet you</span></td></tr>
+    <tr><td><span class="es">Me llamo…</span></td><td><span class="en" data-i18n="p.b6">My name is…</span></td></tr>
+    <tr><td><span class="es">Por favor</span></td><td><span class="en" data-i18n="p.b7">Please</span></td></tr>
+    <tr><td><span class="es">Gracias</span></td><td><span class="en" data-i18n="p.b8">Thank you</span></td></tr>
+    <tr><td><span class="es">De nada</span></td><td><span class="en" data-i18n="p.b9">You're welcome</span></td></tr>
+    <tr><td><span class="es">Disculpe</span></td><td><span class="en" data-i18n="p.b10">Excuse me / sorry</span></td></tr>
+    <tr><td><span class="es">¿Habla inglés?</span></td><td><span class="en" data-i18n="p.b11">Do you speak English?</span></td></tr>
+    <tr><td><span class="es">No entiendo</span></td><td><span class="en" data-i18n="p.b12">I don't understand</span></td></tr>
+    <tr><td><span class="es">¿Puede repetir, por favor?</span></td><td><span class="en" data-i18n="p.b13">Can you repeat that, please?</span></td></tr>
+  </table>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="p.a2">▶ Pack 2 · Getting around</div>
+    <audio controls preload="none" src="assets/audio/phrases-transport.mp3"></audio>
+  </div>
+  <table>
+    <tr><th>Spanish</th><th class="ph-en">English</th></tr>
+    <tr><td><span class="es">¿Dónde está…?</span></td><td><span class="en" data-i18n="p.t1">Where is…?</span></td></tr>
+    <tr><td><span class="es">¿Me lleva a esta dirección?</span></td><td><span class="en" data-i18n="p.t2">Can you take me to this address?</span></td></tr>
+    <tr><td><span class="es">¿A cuánto está…?</span></td><td><span class="en" data-i18n="p.t3">How far is…?</span></td></tr>
+    <tr><td><span class="es">¿Dónde puedo tomar un Uber?</span></td><td><span class="en" data-i18n="p.t4">Where can I get an Uber?</span></td></tr>
+    <tr><td><span class="es">¿Cuánto cuesta el boleto?</span></td><td><span class="en" data-i18n="p.t5">How much is the ticket?</span></td></tr>
+    <tr><td><span class="es">La estación más cercana</span></td><td><span class="en" data-i18n="p.t6">The nearest station</span></td></tr>
+    <tr><td><span class="es">Derecho / A la izquierda / A la derecha</span></td><td><span class="en" data-i18n="p.t7">Straight / Left / Right</span></td></tr>
+    <tr><td><span class="es">Perdón, ¿dónde queda el Metrobús?</span></td><td><span class="en" data-i18n="p.t8">Excuse me, where is the Metrobús?</span></td></tr>
+  </table>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="p.a3">▶ Pack 3 · Food &amp; markets</div>
+    <audio controls preload="none" src="assets/audio/phrases-food.mp3"></audio>
+  </div>
+  <table>
+    <tr><th>Spanish</th><th class="ph-en">English</th></tr>
+    <tr><td><span class="es">Una mesa para dos, por favor</span></td><td><span class="en" data-i18n="p.f1">A table for two, please</span></td></tr>
+    <tr><td><span class="es">La carta, por favor</span></td><td><span class="en" data-i18n="p.f2">The menu, please</span></td></tr>
+    <tr><td><span class="es">¿Qué me recomienda?</span></td><td><span class="en" data-i18n="p.f3">What do you recommend?</span></td></tr>
+    <tr><td><span class="es">Soy alérgico a…</span></td><td><span class="en" data-i18n="p.f4">I'm allergic to…</span></td></tr>
+    <tr><td><span class="es">Sin picante, por favor</span></td><td><span class="en" data-i18n="p.f5">Not spicy, please</span></td></tr>
+    <tr><td><span class="es">Una cerveza / un agua, por favor</span></td><td><span class="en" data-i18n="p.f6">A beer / a water, please</span></td></tr>
+    <tr><td><span class="es">¿Qué es esto?</span></td><td><span class="en" data-i18n="p.f7">What is this?</span></td></tr>
+    <tr><td><span class="es">La cuenta, por favor</span></td><td><span class="en" data-i18n="p.f8">The bill, please</span></td></tr>
+    <tr><td><span class="es">¡Buen provecho!</span></td><td><span class="en" data-i18n="p.f9">Enjoy your meal!</span></td></tr>
+  </table>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="p.a4">▶ Pack 4 · Emergencies &amp; help</div>
+    <audio controls preload="none" src="assets/audio/phrases-emergency.mp3"></audio>
+  </div>
+  <table>
+    <tr><th>Spanish</th><th class="ph-en">English</th></tr>
+    <tr><td><span class="es">¡Ayuda!</span></td><td><span class="en" data-i18n="p.e1">Help!</span></td></tr>
+    <tr><td><span class="es">Llame al 911</span></td><td><span class="en" data-i18n="p.e2">Call 911</span></td></tr>
+    <tr><td><span class="es">Estoy perdido</span></td><td><span class="en" data-i18n="p.e3">I'm lost</span></td></tr>
+    <tr><td><span class="es">Necesito un médico</span></td><td><span class="en" data-i18n="p.e4">I need a doctor</span></td></tr>
+    <tr><td><span class="es">¿Dónde está el hospital más cercano?</span></td><td><span class="en" data-i18n="p.e5">Where is the nearest hospital?</span></td></tr>
+    <tr><td><span class="es">Me robaron la cartera</span></td><td><span class="en" data-i18n="p.e6">My wallet was stolen</span></td></tr>
+    <tr><td><span class="es">¿Puede llamar a mi hotel?</span></td><td><span class="en" data-i18n="p.e7">Can you call my hotel?</span></td></tr>
+    <tr><td><span class="es">Estoy bien, gracias</span></td><td><span class="en" data-i18n="p.e8">I'm fine, thank you</span></td></tr>
+    <tr><td><span class="es">¿Dónde hay una farmacia?</span></td><td><span class="en" data-i18n="p.e9">Where is there a pharmacy?</span></td></tr>
+  </table>
+</section>
+
+<!-- ============ BUDGET ============ -->
+<section class="view" id="budget">
+  <h2 class="section-title" data-i18n="b.title">Monthly Budget Planner</h2>
+  <p class="section-lede" data-i18n="b.lede">Enter your expected monthly costs in USD. The planner totals them and compares against three resident benchmarks for central CDMX, 2026.</p>
+
+  <div class="calc" id="calc">
+    <div><label data-i18n="b.l1">Rent (furnished 1BR)</label><input type="number" data-k="rent" value="1000" min="0"></div>
+    <div><label data-i18n="b.l2">Groceries</label><input type="number" data-k="groceries" value="180" min="0"></div>
+    <div><label data-i18n="b.l3">Eating out &amp; coffee</label><input type="number" data-k="eating" value="220" min="0"></div>
+    <div><label data-i18n="b.l4">Transport (metro + rides)</label><input type="number" data-k="transport" value="60" min="0"></div>
+    <div><label data-i18n="b.l5">Coworking / gym</label><input type="number" data-k="workspace" value="120" min="0"></div>
+    <div><label data-i18n="b.l6">Utilities + phone</label><input type="number" data-k="utilities" value="70" min="0"></div>
+    <div><label data-i18n="b.l7">Health / travel insurance</label><input type="number" data-k="insurance" value="50" min="0"></div>
+    <div><label data-i18n="b.l8">Other / travel / misc</label><input type="number" data-k="other" value="150" min="0"></div>
+  </div>
+
+  <div class="budget-out">
+    <div class="num" id="total">$0</div>
+    <p id="benchmark"></p>
+  </div>
+
+  <table>
+    <tr><th data-i18n="b.th1">Benchmark</th><th data-i18n="b.th2">Monthly total (solo, central CDMX)</th><th data-i18n="b.th3">Style</th></tr>
+    <tr><td data-i18n="b.r1k">Lean</td><td>~$1,400</td><td data-i18n="b.r1v">Value neighborhoods, home cooking, public transit</td></tr>
+    <tr><td data-i18n="b.r2k">Comfortable</td><td>~$2,200</td><td data-i18n="b.r2v">Roma/Condesa-level rent, regular eating out, rides at night</td></tr>
+    <tr><td data-i18n="b.r3k">Indulgent</td><td>$4,500+</td><td data-i18n="b.r3v">Polanco-level housing, fine dining, premium services</td></tr>
+  </table>
+</section>
+
+<!-- ============ CHECKLIST ============ -->
+<section class="view" id="checklist">
+  <h2 class="section-title" data-i18n="c.title">Arrival Checklist</h2>
+  <p class="section-lede" data-i18n="c.lede">Tick items as you complete them. Progress saves automatically in this browser; use the print button to keep a paper copy in your documents folder.</p>
+
+  <div class="progress"><i id="bar"></i></div>
+  <div class="progress-note" id="note"></div>
+
+  <div class="checklist" id="checklist" style="margin-top:18px"></div>
+
+  <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn" onclick="window.print()" data-i18n="c.print">Print checklist</button>
+    <button class="btn ghost" id="resetBtn" data-i18n="c.reset">Reset checklist</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY</div>
+    <div data-i18n="f.line">CDMX Arrival Companion · Product 01 in the Mexico City living series.</div>
+    <div class="disclaimer" data-i18n="f.disc"><b>Important:</b> This guide provides general educational information for travelers and newcomers. It is not immigration, legal, tax, medical or financial advice. Prices, fees, routes and regulations change — verify current requirements with official sources and licensed professionals before acting. Emergency services in Mexico: 911.</div>
+  </div>
+</footer>
+
+<script>
+// ===== Safe storage (works even where localStorage is blocked) =====
+const memoryStore = {};
+const safeStore = {
+  get(k){ try { const v = localStorage.getItem(k); return v === null ? null : v; } catch(e){ return memoryStore[k] ?? null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){ memoryStore[k]=v; } },
+  remove(k){ try { localStorage.removeItem(k); } catch(e){ delete memoryStore[k]; } }
+};
+
+// ===== Chinese translations (English stays as default DOM text) =====
+const ZH = {
+  "tag":"产品 01 · 抵达伴侣",
+  "eyebrow":"墨西哥城 30 天融入指南",
+  "title":"墨西哥城抵达伴侣",
+  "sub":"为初到墨西哥城的你准备的高端实用路线图：街区、交通、金钱、饮食、安全，以及带母语风格音频的西语生存短语手册。",
+  "meta1":"形式：<b>交互式数字指南</b>",
+  "meta2":"包含：<b>5 组音频 · 8 个街区档案 · 预算规划器 · 清单</b>",
+  "meta3":"访问期限：<b>购买后 6 个月</b>",
+  "nav.welcome":"欢迎", "nav.hours":"头 72 小时", "nav.neighborhoods":"街区匹配", "nav.transport":"出行",
+  "nav.money":"金钱与通讯", "nav.daily":"饮食与日常", "nav.safety":"安全与健康", "nav.phrases":"西语短语手册",
+  "nav.budget":"预算规划", "nav.checklist":"抵达清单",
+  "w.title":"欢迎来到墨西哥城",
+  "w.lede":"每年有数以百万计的访客和新移民在墨西哥城安顿下来。本指南提炼了资深居民出发前希望自己就知道的信息，按顺序整理好，你无需反复猜测。",
+  "w.audio":"▶ 欢迎音频 · 35 秒",
+  "w.c1h":"适合短住", "w.c1p":"在城里停留一到六个月的游客、试住者和数字游民。",
+  "w.c2h":"快速建立印象", "w.c2p":"街区适配、实在的预算，以及让大城市变得可控的日常系统。",
+  "w.c3h":"零术语", "w.c3p":"平实的语言、清晰的价格，以及能帮你应对街头真实场景的短语手册。",
+  "w.h3":"你将在里面看到",
+  "w.c4h":"头 72 小时", "w.c4p":"按天展开的行动手册：通讯、现金、交通卡和居家事务，确保第一周内办妥。",
+  "w.c5h":"街区匹配", "w.c5p":"对比八个与外籍人士相关的街区：氛围、租金区间、步行便利度以及适合人群。",
+  "w.c6h":"交通与金钱", "w.c6p":"地铁、Metrobús、共享单车、打车软件、机场接送、ATM 规则、SIM 与 eSIM 选择。",
+  "w.c7h":"带音频的短语手册", "w.c7p":"四组音频涵盖 40 多个生存短语：基础、交通、饮食和应急。",
+  "w.tip":"<b>使用方式：</b>出发前先看“头 72 小时”；大致确定行程日期后浏览街区匹配；抵达那一周把清单留在手机上随时勾选。",
+  "tr.h":"你可以期待什么",
+  "tr.h1":"6 个月访问期", "tr.p1":"购买后指南开放六个月；访问链接与文件通过邮箱送达。",
+  "tr.h2":"中英双语", "tr.p2":"页面语言可随时切换；指南与音频短语手册均提供中英两种语言。",
+  "tr.h3":"即时数字交付", "tr.p3":"自助数字系统，无实体寄送；访问与技术问题按 Whop 政策处理。",
+  "h.title":"你的头 72 小时",
+  "h.lede":"一套简单顺序，覆盖大家最容易拖延的事：联网、备好本地现金、知道怎么出行，以及在住处附近找到日常服务。",
+  "h.s1h":"第 1 天 · 通讯与现金",
+  "h.s1p":"在任意 OXXO 便利店购买 Telcel 或 AT&T 预付费 SIM 卡——带好护照，20GB 以上套餐约 200–300 比索，几分钟即可激活。手机支持的话，出发前装好 eSIM，落地即在机场联网。在银行网点或商场 ATM（BBVA、Banorte 等）取比索，不要用街边独立机器。务必<b>拒绝</b>机器把金额换算成你母国货币的选项——这种动态兑换通常要多花 5–8%。",
+  "h.s2h":"第 2 天 · 出行",
+  "h.s2p":"在任意地铁站购买<b>综合交通卡（Tarjeta de Movilidad Integrada）</b>（15 比索）——一张卡可乘地铁、Metrobús、缆车公交、无轨电车和 Ecobici 共享单车。装好 Uber、DiDi（常便宜 10–20%）、Cabify，以及外卖软件 Rappi。白天沿你住的街区外围走一圈：一小时学到的比任何攻略都多。",
+  "h.s3h":"第 3 天 · 居家事务",
+  "h.s3p":"和房东确认送水节奏——多数楼有定期送 garrafón 桶装水的车，每 20 升约 45–60 比索。找到最近的集市、可步行就诊的药店诊所（Farmacias del Ahorro 或 Guadalajara，诊金约 50–100 比索）和洗衣店（约 20–30 比索/公斤——很多出租房没有洗衣机，这里很常见）。",
+  "h.warn":"<b>高原提醒：</b>墨西哥城海拔 2,240 米（7,350 英尺）。头 2–5 天轻微气短、睡眠变差很常见。多喝水，第一周少喝酒、少做剧烈运动。",
+  "n.title":"街区匹配器",
+  "n.lede":"这座城由一个个适合步行的小岛组成；住在哪里，对日常生活的影响几乎超过其他任何选择。租金为 2026 年一居室带家具月租的美元估算区间。",
+  "n.c1place":"中心 · 创意中心", "n.c1p":"作为默认落脚点自有道理：装饰艺术风格街道，咖啡馆、共享办公和餐厅密度极高，外籍人士也最集中。",
+  "n.c1l1":"适合：初来者、步行便利、远程办公", "n.c1l2":"注意：租金偏高，游客渐多",
+  "n.c2place":"绿树 · 住宅区", "n.c2p":"环绕墨西哥公园和西班牙公园，比 Roma 稍绿、稍安静，咖啡馆氛围浓厚，养狗、设计传媒人群集中。",
+  "n.c2l1":"适合：公园、闹中取静", "n.c2l2":"注意：租金与 Roma 持平；周末夜晚热闹",
+  "n.c3place":"高档 · 使馆区", "n.c3p":"富裕街区：使馆、Masaryk 大道奢侈品店、高级餐厅、整洁街道，隔壁就是查普尔特佩克公园。家庭和高管最有安全感的选择。",
+  "n.c3l1":"适合：安全、配套、家庭、商务居住", "n.c3l2":"注意：非常贵；夜生活较安静",
+  "n.c4place":"中心 · 性价比", "n.c4p":"位于 Roma 与历史中心之间、改革大道旁，更新迅速且便宜一档，地铁便利，酒吧餐厅氛围活跃。",
+  "n.c4l1":"适合：中心地段、Roma 附近的性价比", "n.c4l2":"注意：街区质量逐段不同——需实地查看",
+  "n.c5place":"南部 · 小镇氛围", "n.c5p":"南部波西米亚之心：石板广场、彩色集市、弗里达·卡罗的印记，墨西哥本地气息浓、商业化程度较低。租金更低，美食集市非常精彩。",
+  "n.c5l1":"适合：文化、慢生活、长住家庭", "n.c5l2":"注意：向北通勤较长；共享办公较少",
+  "n.c6place":"住宅 · 本地稳态", "n.c6p":"贝尼托·胡亚雷斯区的中产阶级住宅区：绿树街道、日常配套、夜晚安静，以安全感著称。外国人较少，国际氛围偏弱。",
+  "n.c6l1":"适合：安静本地生活、同等预算空间更大", "n.c6l2":"注意：外籍配套和夜生活有限",
+  "n.c7place":"本地推荐 · 交通便利", "n.c7p":"被本地人问“除了 Polanco、Condesa、Roma 还有哪里”时会推荐的街区。知名塔可店，地铁和 Metrobús 直达 Roma 与市中心，餐厅更便宜。",
+  "n.c7l1":"适合：性价比、地道日常、美食", "n.c7l2":"注意：精致度一般；街头西语更多",
+  "n.c8place":"Roma 更安静的邻居", "n.c8p":"比 Roma Norte 人少、更居家，交通同样方便，带有本地质感。住一个月以上的理性高性价比选择。",
+  "n.c8l1":"适合：预算有限的长租", "n.c8l2":"注意：与其他热闹地段一样需留意街头安全",
+  "n.cap":"Coyoacán——城南的石板广场与殖民风格立面。",
+  "t.title":"出行指南",
+  "t.lede":"在墨西哥城中心区不需要买车。交通拥堵严重；地铁和打车软件几乎能覆盖初到者的所有行程。",
+  "t.c1h":"地铁", "t.c1p":"单程 5 比索，快速、线路密集，线路间免费换乘。高峰时段收好贵重物品；部分车厢为女性和儿童专用。",
+  "t.c2h":"Metrobús", "t.c2p":"单程 6 比索，专用车道行驶于主要大道。4 号线通往机场航站楼。",
+  "t.c3h":"Ecobici 共享单车", "t.c3p":"城市共享单车——在平坦的 Roma、Condesa、Juárez、Polanco 穿行最快。日票约 134 比索，年票约 588 比索。",
+  "t.c4h":"打车软件", "t.c4p":"Uber、DiDi、Cabify 是夜间回家的常规方式。短途按美国标准很便宜；DiDi 通常比 Uber 低 10–20%。",
+  "t.h3":"机场抵达", "t.th1":"路线", "t.th2":"方式", "t.th3":"大致费用",
+  "t.r1o":"Uber / DiDi，或官方出租车亭的正规黄色出租车",
+  "t.r2o":"距离远得多；出租车/打车软件或 Mexicobus 接驳巴士",
+  "t.cap":"中心街区绿树成荫，骑车和步行都很方便。",
+  "t.warn":"<b>绝不拦街边出租车。</b>非正规出租车存在真实的绑架风险。只走登记出租车亭，或每次都用打车软件。",
+  "m.title":"金钱与通讯",
+  "m.lede":"多数商店和打车软件可刷卡，但在集市、街边摊和小饭馆，本地现金仍然必不可少。",
+  "m.c1h":"现金与 ATM", "m.c1l1":"在银行网点或商场 ATM 取款", "m.c1l2":"拒绝机器上的货币兑换选项", "m.c1l3":"备好零钱用于集市和小费",
+  "m.c2h":"SIM 与 eSIM", "m.c2l1":"OXXO 购买 Telcel / AT&T 预付费卡，需护照", "m.c2l2":"20GB 以上套餐约 200–300 比索", "m.c2l3":"可在落地前装好 eSIM",
+  "m.c3h":"常用应用", "m.c3l1":"Uber · DiDi · Cabify——打车", "m.c3l2":"Rappi——外卖与跑腿", "m.c3l3":"Google 地图——地铁与步行路线",
+  "m.c4h":"汇率提示", "m.c4p":"2026 年 11 月，1 美元约兑 18.5 比索。汇率每月波动——做预算当天再查，避免在机场柜台换钱。",
+  "m.tip":"<b>卡片与手机安全：</b>手机不要放咖啡馆桌面或后裤兜；在外籍人士聚集区，手机小偷小摸是最常见的事件，远多于暴力犯罪。",
+  "d.title":"饮食与日常",
+  "d.lede":"墨西哥城是全球各大价位段都出色的美食城市之一。以下是新移民最先问起的日常系统。",
+  "d.cap":"集市和街边摊是日常吃饭的主力——带好零钱。",
+  "d.c1h":"街头美食", "d.c1p":"塔可和小食 $2–4 起；排队本地顾客多、蒸汽新鲜的摊位更稳妥。",
+  "d.c2h":"Comida corrida 套餐午餐", "d.c2p":"家庭小馆的固定价多道菜午餐，约 $5——全球最划算的餐饮之一。",
+  "d.c3h":"休闲与中端餐厅", "d.c3p":"简餐约 $8；中端餐厅接近 $40；咖啡约 $3，啤酒约 $2.50。",
+  "d.h3a":"日常服务", "d.th1":"需求", "d.th2":"办理方式",
+  "d.r1k":"饮用水", "d.r1v":"不要喝自来水。瓶装水或送到住处的 20 升 garrafón 桶装水，每桶约 45–60 比索。",
+  "d.r2k":"药店诊所", "d.r2v":"Farmacias del Ahorro / Guadalajara / Similares 提供免预约普通就诊，约 30–100 比索，药品取自店内药房。",
+  "d.r3k":"洗衣", "d.r3v":"按公斤洗叠，约 20–30 比索/公斤。很多出租房没有洗衣机。",
+  "d.r4k":"买菜", "d.r4v":"本地集市买生鲜；超市（Superama、Wal-Mart、Chedraui）和外卖软件解决其余采购。",
+  "d.h3b":"季节与天气",
+  "d.c4h":"旱季 · 11–4 月", "d.c4p":"早晨蓝天通透，夜晚凉爽，最适合户外活动。",
+  "d.c5h":"雨季 · 5–10 月", "d.c5p":"下午常有稳定阵雨，多在 16–19 点；带一件轻便雨衣。",
+  "d.c6h":"空气质量 · 2–5 月", "d.c6p":"雾霾最重的时段，无风天最差。6–1 月通常更清洁。",
+  "s.title":"安全与健康",
+  "s.lede":"同时记住两点：访客居住的街区白天确实热闹、安全；但这座城市需要你遵守一些具体而简单的注意事项。",
+  "s.cap":"夜间尽量走热闹、有路灯的街道，历史中心尤其如此。",
+  "s.c1h":"日常规则",
+  "s.c1l1":"夜间用打车软件；绝不拦街边出租车", "s.c1l2":"只在银行内或商场里用 ATM", "s.c1l3":"手机远离桌面和后裤兜",
+  "s.c1l4":"天黑后走热闹有灯的街道", "s.c1l5":"女性夜间尽量乘坐地铁女性专用车厢",
+  "s.c2h":"紧急电话",
+  "s.c2l1":"<b>911</b>——警察、救护车、消防（全国紧急号码）", "s.c2l2":"接线人员以西班牙语为主；把酒店地址离线保存好", "s.c2l3":"使馆/领馆联系方式存入离线证件夹",
+  "s.h3":"医疗安排",
+  "s.c3h":"免预约就诊", "s.c3p":"药店诊所可处理小毛病，无需预约。更严重的情况，外籍人士普遍选择城市私立医院。",
+  "s.c4h":"需要了解的医院", "s.c4p":"Hospital ABC（Observatorio / Santa Fe）、Hospital Ángeles（多院区）、Médica Sur（Tlalpan）。出发前对比国际旅行或医疗保险。",
+  "s.tip":"<b>地震：</b>墨西哥城有预警系统，可提前 30–90 秒报警。警报响起：蹲下、掩护、抓牢；第一天就找出住处最安全的位置，鞋子放在床边。",
+  "p.title":"西语生存短语手册",
+  "p.lede":"四组音频覆盖你真正会遇到的场景。去机场的路上听一遍；下表按每组短语逐一对照。",
+  "p.a1":"▶ 第 1 组 · 基础与问候", "p.a2":"▶ 第 2 组 · 出行", "p.a3":"▶ 第 3 组 · 饮食与集市", "p.a4":"▶ 第 4 组 · 应急与求助",
+  "p.b1":"你好", "p.b2":"早上好", "p.b3":"下午好", "p.b4":"你好吗？", "p.b5":"很高兴认识你", "p.b6":"我叫……",
+  "p.b7":"请", "p.b8":"谢谢", "p.b9":"不客气", "p.b10":"打扰一下 / 抱歉", "p.b11":"您会说英语吗？", "p.b12":"我没听懂", "p.b13":"请您再说一遍好吗？",
+  "p.t1":"……在哪里？", "p.t2":"您能送我到这个地址吗？", "p.t3":"……有多远？", "p.t4":"我在哪里可以叫到 Uber？",
+  "p.t5":"车票多少钱？", "p.t6":"最近的车站", "p.t7":"直行 / 左转 / 右转", "p.t8":"请问 Metrobús 在哪里？",
+  "p.f1":"请安排两人桌", "p.f2":"请给我菜单", "p.f3":"您推荐什么？", "p.f4":"我对……过敏", "p.f5":"请不要放辣",
+  "p.f6":"请给我一杯啤酒 / 一瓶水", "p.f7":"这是什么？", "p.f8":"请结账", "p.f9":"祝您用餐愉快！",
+  "p.e1":"救命！", "p.e2":"拨打 911", "p.e3":"我迷路了", "p.e4":"我需要看医生", "p.e5":"最近的医院在哪里？",
+  "p.e6":"我的钱包被偷了", "p.e7":"您能打给我的酒店吗？", "p.e8":"我没事，谢谢", "p.e9":"哪里有药店？",
+  "b.title":"月度预算规划器",
+  "b.lede":"以美元填入你预计的月度开销。规划器自动合计，并与 2026 年墨西哥城中心区三个居民基准对比。",
+  "b.l1":"房租（带家具一居室）", "b.l2":"买菜", "b.l3":"外食与咖啡", "b.l4":"交通（地铁 + 打车）",
+  "b.l5":"共享办公 / 健身", "b.l6":"水电网 + 电话", "b.l7":"医疗 / 旅行保险", "b.l8":"其他 / 旅行 / 杂项",
+  "b.th1":"基准", "b.th2":"月度合计（单人，中心区）", "b.th3":"生活方式",
+  "b.r1k":"节俭型", "b.r1v":"性价比街区、自己做饭、公共交通",
+  "b.r2k":"舒适型", "b.r2v":"Roma/Condesa 级房租、经常外食、夜间打车",
+  "b.r3k":"宽裕型", "b.r3v":"Polanco 级住房、高级餐厅、高端服务",
+  "c.title":"抵达清单",
+  "c.lede":"办妥一项勾选一项。进度自动保存在本浏览器；可打印一份纸质版存入证件夹。",
+  "c.print":"打印清单", "c.reset":"重置清单",
+  "f.line":"墨西哥城抵达伴侣 · 墨西哥城生活系列产品 01。",
+  "f.disc":"<b>重要提示：</b>本指南为访客和新移民提供通用教育信息，不构成移民、法律、税务、医疗或财务建议。价格、费用、路线和规定会变动——行动前请通过官方渠道和持牌专业人士核实最新要求。墨西哥紧急服务电话：911。"
+};
+
+// ===== Router =====
+const chips = document.querySelectorAll('.chips button');
+const views = document.querySelectorAll('.view');
+function show(id){
+  views.forEach(v=>v.classList.toggle('active', v.id===id));
+  chips.forEach(b=>b.classList.toggle('active', b.dataset.view===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if (typeof calc === 'function') calc();
+}
+chips.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+
+// ===== Language engine =====
+let lang = safeStore.get('mdt_lang') || 'en';
+function applyLang(l){
+  lang = l; safeStore.set('mdt_lang', l);
+  document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    if(l === 'zh'){
+      if(el.dataset.orig === undefined) el.dataset.orig = el.innerHTML;
+      el.innerHTML = ZH[el.dataset.i18n] ?? el.dataset.orig;
+    } else if(el.dataset.orig !== undefined){
+      el.innerHTML = el.dataset.orig;
+    }
+  });
+  document.querySelectorAll('.ph-en').forEach(el=>{ el.textContent = l==='zh' ? '中文' : 'English'; });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  if(typeof renderChecklist === 'function') renderChecklist();
+  if(typeof calc === 'function') calc();
+}
+
+// ===== Checklist data (bilingual pairs) =====
+try {
+  const CHECK_ITEMS = [
+    [['Before departure','出发前'], [
+      ['Passport valid at least 6 months beyond stay','护照有效期超出停留期至少 6 个月'],
+      ['Onward travel ticket and accommodation details saved offline','返程/续程机票与住宿信息离线保存'],
+      ['eSIM installed or prepaid SIM plan arranged','装好 eSIM 或安排好预付费 SIM 套餐'],
+      ['Digital + physical copies of passport and visa stored separately','护照与签证的电子和纸质副本分开存放'],
+      ['Travel / health insurance policy downloaded','下载旅行/医疗保险保单'],
+      ['Uber, DiDi, Cabify and Rappi apps installed','装好 Uber、DiDi、Cabify 和 Rappi'],
+      ['Hotel / host address saved offline in Spanish and English','酒店/房东地址以西英双语离线保存'],
+      ['Emergency contacts and embassy details saved offline','紧急联系人与使馆信息离线保存']
+    ]],
+    [['First 24 hours','头 24 小时'], [
+      ['Buy local SIM or activate eSIM at arrival','抵达后购买本地 SIM 或激活 eSIM'],
+      ['Withdraw pesos from a bank-branch / mall ATM','在银行网点/商场 ATM 取比索'],
+      ['Buy Tarjeta de Movilidad Integrada at a metro station','在地铁站购买综合交通卡'],
+      ['Walk your colonia perimeter in daylight','白天沿街区外围走一圈'],
+      ['Locate nearest pharmacy clinic and mercado','找到最近的药店诊所和集市']
+    ]],
+    [['First week','第一周'], [
+      ['Confirm garrafón water delivery with host','与房东确认桶装水配送'],
+      ['Identify nearest laundry and grocery options','确认最近的洗衣店和买菜渠道'],
+      ['Note the safest spot in your accommodation for earthquakes','记下住处地震避险最安全的位置'],
+      ['Save 911 and your hotel address in your phone','手机存入 911 和酒店地址'],
+      ['Test one metro journey and one ride-app journey in daylight','白天试乘一次地铁、一次打车软件']
+    ]]
+  ];
+  const storeKey = 'mdt_p1_checklist';
+  let state = JSON.parse(safeStore.get(storeKey)||'{}');
+  const listEl = document.getElementById('checklist');
+  function renderChecklist(){
+    if(!listEl) return;
+    listEl.innerHTML=''; let total=0, done=0;
+    CHECK_ITEMS.forEach(([group,items])=>{
+      const h=document.createElement('h3'); h.textContent = lang==='zh'?group[1]:group[0]; listEl.appendChild(h);
+      items.forEach(([en,zh])=>{
+        const key=group[0]+'|'+en; total++;
+        const checked=!!state[key]; if(checked)done++;
+        const row=document.createElement('label');
+        row.className='check-item'+(checked?' done':'');
+        row.innerHTML=`<input type="checkbox" ${checked?'checked':''}><span>${lang==='zh'?zh:en}</span>`;
+        row.querySelector('input').addEventListener('change',e=>{
+          state[key]=e.target.checked; safeStore.set(storeKey,JSON.stringify(state));
+          renderChecklist();
+        });
+        listEl.appendChild(row);
+      });
+    });
+    const bar=document.getElementById('bar'), note=document.getElementById('note');
+    if(bar) bar.style.width=(total?done/total*100:0)+'%';
+    if(note) note.textContent = lang==='zh' ? `${done}/${total} 已完成` : `${done} of ${total} complete`;
+  }
+  renderChecklist();
+  const resetBtn=document.getElementById('resetBtn');
+  if(resetBtn) resetBtn.addEventListener('click',()=>{
+    state={}; safeStore.remove(storeKey); renderChecklist();
+  });
+} catch(err){ console.error('Checklist error:', err); }
+
+// ===== Budget calculator (independent of other modules) =====
+function calc(){
+  const inputs=document.querySelectorAll('#calc input');
+  const totalEl=document.getElementById('total');
+  const benchEl=document.getElementById('benchmark');
+  if(!inputs.length || !totalEl) return;
+  let t=0;
+  inputs.forEach(i=>{ const n=parseFloat(i.value); if(!isNaN(n)) t+=n; });
+  totalEl.textContent='$'+Math.round(t).toLocaleString('en-US');
+  if(benchEl){
+    let b;
+    if(t<1700) b = lang==='zh' ? '接近节俭型基准——性价比选择和自己做饭压低了总额。' : 'Near the lean benchmark — value choices and home cooking keep this total down.';
+    else if(t<3200) b = lang==='zh' ? '处于舒适区间——中心区房租和定期外出消费已反映在内。' : 'In the comfortable range — central rent and regular outings are reflected here.';
+    else b = lang==='zh' ? '高于宽裕型基准——高端住房、餐饮或服务推高了总额。' : 'Above the indulgent benchmark — premium housing, dining or services are driving this total.';
+    benchEl.textContent=b;
+  }
+}
+document.querySelectorAll('#calc input').forEach(i=>{
+  i.addEventListener('input',calc);
+  i.addEventListener('change',calc);
+});
+calc();
+applyLang(lang);
+</script>
+</body>
+</html>

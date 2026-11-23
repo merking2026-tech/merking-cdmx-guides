@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CDMX Relocation Blueprint — Merking Digital Technology</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#1c1813; --charcoal:#241f18; --paper:#f6f1e7; --card:#fffdf9;
+  --gold:#c9a25e; --gold-soft:#e7cf9a; --gold-deep:#9a7a3e;
+  --muted:#6f6558; --line:#e7dcc8; --green:#5c7a5e; --red:#a8543f;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;font-size:15.5px}
+img{max-width:100%;display:block}
+a{color:var(--gold-deep)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.topbar{background:var(--charcoal);color:var(--gold-soft);border-bottom:1px solid #3a3226}
+.topbar .wrap{display:flex;align-items:center;gap:12px;padding:14px 22px}
+.topbar img{width:38px;height:38px;border-radius:6px;object-fit:cover}
+.topbar .brand{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:14px}
+.topbar .brand small{display:block;font-family:var(--sans);font-weight:400;letter-spacing:.22em;font-size:10px;color:#b9a888;margin-top:2px}
+.topbar .tag{margin-left:auto;font-size:12px;color:#cbb98f;letter-spacing:.08em}
+.lang{display:flex;gap:4px;margin-left:10px}
+.lang button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-size:11px;padding:4px 11px;border-radius:12px;cursor:pointer;font-family:var(--sans)}
+.lang button.active{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+.hero{position:relative;color:#fff;min-height:440px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,10,.35) 0%,rgba(20,16,10,.55) 55%,rgba(20,16,10,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:60px 22px 40px}
+.hero .eyebrow{color:var(--gold-soft);letter-spacing:.3em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.12;max-width:720px}
+.hero p.sub{margin-top:16px;font-size:17px;color:#efe7d8;max-width:620px;font-weight:300}
+.hero .meta{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap;font-size:13px;color:#d9c9a6}
+.hero .meta span b{color:#fff}
+.chips{position:sticky;top:0;z-index:30;background:var(--charcoal);border-top:1px solid #3a3226}
+.chips .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 22px;scrollbar-width:thin}
+.chips button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-family:var(--sans);font-size:13px;padding:8px 14px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:.2s}
+.chips button.active,.chips button:hover{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+.view{display:none;padding:44px 0 70px}
+.view.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2.section-title{font-family:var(--serif);font-size:30px;font-weight:700;margin-bottom:8px}
+.section-lede{color:var(--muted);max-width:680px;margin-bottom:30px;font-size:16px}
+h3{font-family:var(--serif);font-size:21px;margin:26px 0 12px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(80,62,32,.07)}
+.card h4{font-family:var(--serif);font-size:18px;margin-bottom:6px}
+.card .place{color:var(--gold-deep);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.card p{color:#4c443a;font-size:14px}
+.card ul{margin:10px 0 0 18px;color:#4c443a;font-size:14px}
+.card ul li{margin:5px 0}
+.tip{border-left:3px solid var(--gold);background:#fbf4e4;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#5a4f3d;font-size:14px}
+.warn{border-left:3px solid var(--red);background:#fbeee9;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#6b3d31;font-size:14px}
+.audio-box{background:var(--charcoal);color:var(--gold-soft);border-radius:14px;padding:18px 20px;margin:18px 0}
+.audio-box .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.audio-box audio{width:100%;margin-top:6px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#f2e8d3;font-family:var(--serif);font-size:13.5px;color:var(--charcoal)}
+.step{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:16px}
+.step .n{flex:0 0 42px;height:42px;border-radius:50%;background:var(--gold);color:var(--charcoal);font-family:var(--serif);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center}
+.step h4{font-family:var(--serif);margin-bottom:6px}
+.step p{font-size:14px;color:#4c443a}
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.check-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.check-item:last-child{border-bottom:none}
+.check-item input{margin-top:5px;width:17px;height:17px;accent-color:var(--gold-deep)}
+.check-item.done span{text-decoration:line-through;color:var(--muted)}
+.progress{height:8px;background:#ece1cb;border-radius:6px;overflow:hidden;margin:14px 0 6px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));width:0;transition:.3s}
+.progress-note{font-size:13px;color:var(--muted)}
+.module-hero{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:20px 0}
+.module-hero img{width:45%;height:200px;object-fit:cover}
+.module-hero .body{padding:22px}
+.module-hero .num{font-family:var(--serif);color:var(--gold-deep);letter-spacing:.2em;font-size:13px}
+.module-hero h3{margin:4px 0 6px}
+.module-hero p{font-size:14px;color:#4c443a}
+.tpl{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.tpl .ic{flex:0 0 46px;height:46px;border-radius:12px;background:#f2e8d3;color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px}
+.tpl .body{flex:1}
+.tpl h4{font-family:var(--serif);font-size:16px}
+.tpl p{font-size:13.5px;color:var(--muted)}
+.tpl .links{display:flex;gap:10px;flex-wrap:wrap;white-space:nowrap}
+.tpl .links a{font-size:13px;font-weight:600;white-space:nowrap}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-item summary{cursor:pointer;padding:16px 20px;font-family:var(--serif);font-size:15.5px;list-style:none}
+.faq-item summary::before{content:"+ ";color:var(--gold-deep)}
+.faq-item[open] summary::before{content:"– "}
+.faq-item .ans{padding:0 20px 16px;font-size:14px;color:#4c443a}
+footer{background:var(--charcoal);color:#b9a888;padding:34px 0;font-size:12.5px}
+footer .wrap{display:grid;gap:10px}
+footer .brand{font-family:var(--serif);color:var(--gold-soft);letter-spacing:.12em}
+.disclaimer{background:#fbf4e4;border:1px dashed var(--gold);border-radius:12px;padding:16px 18px;color:#6b5c3e;font-size:12.5px;margin-top:20px}
+.btn{display:inline-block;background:var(--gold);color:var(--charcoal);border:none;padding:11px 20px;border-radius:10px;font-weight:600;cursor:pointer;font-family:var(--sans);font-size:14px;text-decoration:none}
+@media print{.chips,.topbar,.btn,.lang{display:none!important}.view{display:block!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <img src="assets/logo.jpg" alt="MDT logo">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY<small>CROSS-CULTURAL LIVING · MEXICO CITY</small></div>
+    <div class="tag" data-i18n="tag">Product 02 · Relocation Blueprint</div>
+    <div class="lang">
+      <button data-lang="en" onclick="applyLang('en')">EN</button>
+      <button data-lang="zh" onclick="applyLang('zh')">中文</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <img class="bg" src="assets/hero.jpg" alt="Relocation planning desk">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">The 6-Module Move-to-CDMX System</div>
+    <h1 data-i18n="title">CDMX Relocation Blueprint</h1>
+    <p class="sub" data-i18n="sub">A structured relocation course for potential and new immigrants: fit assessment, visa and residency roadmap, housing, daily setup, money basics and your first ninety days — with reusable templates for every stage.</p>
+    <div class="meta">
+      <span data-i18n="meta1">Format: <b>Self-paced course hub</b></span>
+      <span data-i18n="meta2">Includes: <b>6 modules · 3 audio summaries · 4 template files · timeline planner</b></span>
+      <span data-i18n="meta3">Access: <b>6 months from purchase</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="chips">
+  <div class="wrap" id="chips">
+    <button data-view="welcome" class="active" data-i18n="nav.welcome">Welcome</button>
+    <button data-view="m1" data-i18n="nav.m1">M1 · Is CDMX Right for You</button>
+    <button data-view="m2" data-i18n="nav.m2">M2 · Visa &amp; Residency</button>
+    <button data-view="m3" data-i18n="nav.m3">M3 · Housing Hunt</button>
+    <button data-view="m4" data-i18n="nav.m4">M4 · Daily Setup</button>
+    <button data-view="m5" data-i18n="nav.m5">M5 · Money &amp; Legal Basics</button>
+    <button data-view="m6" data-i18n="nav.m6">M6 · First 90 Days</button>
+    <button data-view="templates" data-i18n="nav.templates">Template Vault</button>
+    <button data-view="faq" data-i18n="nav.faq">FAQ</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- WELCOME -->
+<section class="view active" id="welcome">
+  <h2 class="section-title" data-i18n="w.title">Your relocation, planned module by module</h2>
+  <p class="section-lede" data-i18n="w.lede">The Blueprint turns an overwhelming move into a sequenced roadmap. Work through modules in order; each one pairs a lesson, an audio summary and a template you can reuse for your own file.</p>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="w.audio">▶ Course introduction · 40 sec</div>
+    <audio controls preload="none" src="assets/audio/intro.mp3"></audio>
+  </div>
+
+  <div class="grid g3">
+    <div class="card"><div class="place" data-i18n="w.p1">Module 1</div><h4 data-i18n="w.c1h">Fit assessment</h4><p data-i18n="w.c1p">Does CDMX match your lifestyle, budget and timeline?</p></div>
+    <div class="card"><div class="place" data-i18n="w.p2">Module 2</div><h4 data-i18n="w.c2h">Visa &amp; residency</h4><p data-i18n="w.c2p">Visitor vs temporary resident, documents, consulate and INM steps.</p></div>
+    <div class="card"><div class="place" data-i18n="w.p3">Module 3</div><h4 data-i18n="w.c3h">Housing</h4><p data-i18n="w.c3p">Neighborhood match, lease terms and listing red flags.</p></div>
+    <div class="card"><div class="place" data-i18n="w.p4">Module 4</div><h4 data-i18n="w.c4h">Daily setup</h4><p data-i18n="w.c4p">Utilities, internet, SIM, banking, insurance, schools.</p></div>
+    <div class="card"><div class="place" data-i18n="w.p5">Module 5</div><h4 data-i18n="w.c5h">Money &amp; legal</h4><p data-i18n="w.c5p">Remittance, FX, records and tax-residency awareness.</p></div>
+    <div class="card"><div class="place" data-i18n="w.p6">Module 6</div><h4 data-i18n="w.c6h">First 90 days</h4><p data-i18n="w.c6p">Week-by-week settling-in plan and integration checklist.</p></div>
+  </div>
+
+  <div class="tip" data-i18n="w.tip"><b>How to work through it:</b> Each module opens with the big picture, then the practical steps, then a template. Spend one session per module; fill templates as you go so your relocation file is complete before you fly.</div>
+
+  <h3 data-i18n="tr.h">What you can expect</h3>
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="tr.h1">6-month access</h4><p data-i18n="tr.p1">Your course hub stays open for six months from purchase; the access link and files arrive by email.</p></div>
+    <div class="card"><h4 data-i18n="tr.h2">English / Chinese</h4><p data-i18n="tr.p2">Toggle the page language anytime; lessons and every template ship in both English and Chinese.</p></div>
+    <div class="card"><h4 data-i18n="tr.h3">Instant digital delivery</h4><p data-i18n="tr.p3">A self-serve digital course with no shipping; access and technical issues are handled per Whop policy.</p></div>
+  </div>
+</section>
+
+<!-- M1 -->
+<section class="view" id="m1">
+  <div class="module-hero">
+    <img src="assets/fit.jpg" alt="City overview">
+    <div class="body"><div class="num">MODULE 01</div><h3 data-i18n="m1.h3">Is CDMX Right for You?</h3><p data-i18n="m1.p">Before paperwork, test the fit: lifestyle, budget, climate and the trade-offs you should accept knowingly.</p></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m1.c1h">Who thrives here</h4><ul>
+      <li data-i18n="m1.c1l1"><b>Remote workers:</b> fast central internet, dense café and coworking scene, US-Central time zone.</li>
+      <li data-i18n="m1.c1l2"><b>Families:</b> international schools, green neighborhoods, lower cost than North American capitals.</li>
+      <li data-i18n="m1.c1l3"><b>Retirees:</b> comfortable private healthcare, walkable daily life, strong value for dollar income.</li>
+      <li data-i18n="m1.c1l4"><b>Couples &amp; solo:</b> big-city culture, food and social scenes in walkable central colonias.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m1.c2h">Trade-offs to weigh</h4><ul>
+      <li data-i18n="m1.c2l1">Altitude 2,240 m — acclimatization takes a few days.</li>
+      <li data-i18n="m1.c2l2">Traffic is heavy; most residents skip the car.</li>
+      <li data-i18n="m1.c2l3">Feb–May can be smoggy; afternoon rains May–Oct.</li>
+      <li data-i18n="m1.c2l4">Spanish language skills improve daily life substantially.</li>
+    </ul></div>
+  </div>
+
+  <h3 data-i18n="m1.h3b">Cost benchmarks (solo, central CDMX, 2026)</h3>
+  <table>
+    <tr><th data-i18n="m1.th1">Profile</th><th data-i18n="m1.th2">Monthly total</th><th data-i18n="m1.th3">What it covers</th></tr>
+    <tr><td data-i18n="m1.r1k">Lean</td><td>~$1,400</td><td data-i18n="m1.r1v">Value colonia, home cooking, public transit</td></tr>
+    <tr><td data-i18n="m1.r2k">Comfortable</td><td>$1,500–2,600</td><td data-i18n="m1.r2v">Roma/Condesa-level rent, regular eating out, ride apps at night</td></tr>
+    <tr><td data-i18n="m1.r3k">Indulgent</td><td>$4,500+</td><td data-i18n="m1.r3v">Polanco-level housing, fine dining, premium services</td></tr>
+  </table>
+
+  <h3 data-i18n="m1.h3c">Fit self-check</h3>
+  <div class="checklist" id="m1check"></div>
+  <div class="progress"><i id="m1bar"></i></div>
+  <div class="progress-note" id="m1note"></div>
+</section>
+
+<!-- M2 -->
+<section class="view" id="m2">
+  <div class="module-hero">
+    <img src="assets/visa.jpg" alt="Passport and paperwork">
+    <div class="body"><div class="num">MODULE 02</div><h3 data-i18n="m2.h3">Visa &amp; Residency Roadmap</h3><p data-i18n="m2.p">Understand the routes, the solvency thresholds, and the two-step consulate-then-INM process.</p></div>
+  </div>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="m2.audio">▶ Audio summary · Visa &amp; residency · 55 sec</div>
+    <audio controls preload="none" src="assets/audio/visa-roadmap.mp3"></audio>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><div class="place" data-i18n="m2.c1place">Short stay</div><h4 data-i18n="m2.c1h">Visitor / tourist stamp</h4><ul>
+      <li data-i18n="m2.c1l1">Granted at the port of entry, up to 180 days; the officer decides the exact length — many visitors now receive 30–90 days.</li>
+      <li data-i18n="m2.c1l2">Onward travel and accommodation proof may be asked for.</li>
+      <li data-i18n="m2.c1l3">You cannot work for a Mexican employer on this status.</li>
+    </ul></div>
+    <div class="card"><div class="place" data-i18n="m2.c2place">Long stay</div><h4 data-i18n="m2.c2h">Temporary Resident Visa</h4><ul>
+      <li data-i18n="m2.c2l1">For stays over 180 days, up to 4 years.</li>
+      <li data-i18n="m2.c2l2">Applied for at a Mexican consulate or embassy <b>abroad</b>, before moving.</li>
+      <li data-i18n="m2.c2l3">Remote work paid by a foreign employer is generally compatible; local salary employment requires separate INM authorization.</li>
+    </ul></div>
+  </div>
+
+  <h3 data-i18n="m2.h3b">Economic solvency (consulate-level, verify current figures)</h3>
+  <table>
+    <tr><th data-i18n="m2.th1">Route</th><th data-i18n="m2.th2">Typical requirement</th><th data-i18n="m2.th3">Evidence</th></tr>
+    <tr><td data-i18n="m2.r1k">Income / pension</td><td data-i18n="m2.r1v">Roughly $4,000–4,500 USD net monthly income, previous 6 months</td><td data-i18n="m2.r1e">Pay stubs / pension letter + bank statements; employment letter where applicable</td></tr>
+    <tr><td data-i18n="m2.r2k">Savings / investments</td><td data-i18n="m2.r2v">Roughly $70,000 USD average monthly balance, previous 12 months</td><td data-i18n="m2.r2e">Stamped or official bank statements, full statements month by month</td></tr>
+    <tr><td data-i18n="m2.r3k">Other qualifiers</td><td data-i18n="m2.r3v">Family ties to a resident, Mexican real estate, investment, student enrollment</td><td data-i18n="m2.r3e">Certificate / deed / enrollment proof, per consulate guidance</td></tr>
+  </table>
+  <div class="warn" data-i18n="m2.warn"><b>Thresholds vary by consulate and by UMA updates each year.</b> Confirm exact figures, accepted documents and translation rules with the Mexican consulate serving your country of residence before booking an appointment.</div>
+
+  <h3 data-i18n="m2.h3c">The process, step by step</h3>
+  <div class="step"><div class="n">1</div><div><h4 data-i18n="m2.s1h">Prepare documents</h4><p data-i18n="m2.s1p">Valid passport (6+ months, blank page), passport photo, application form, proof of legal status if applying in a third country, solvency evidence. Documents issued outside Mexico or your application country may need an <b>apostille / legalization</b> and an <b>official Spanish translation</b>.</p></div></div>
+  <div class="step"><div class="n">2</div><div><h4 data-i18n="m2.s2h">Book the consulate appointment</h4><p data-i18n="m2.s2p">Use the MiConsulado portal (citas.sre.gob.mx) and select the visas department. The consular fee is around $56 USD; it is non-refundable even if the visa is not approved.</p></div></div>
+  <div class="step"><div class="n">3</div><div><h4 data-i18n="m2.s3h">Interview &amp; biometrics</h4><p data-i18n="m2.s3p">Attend in person: document review, consular interview (English or Spanish), photo and fingerprints. Processing can take up to ten business days; the decision is final.</p></div></div>
+  <div class="step"><div class="n">4</div><div><h4 data-i18n="m2.s4h">Enter Mexico &amp; collect the resident card</h4><p data-i18n="m2.s4p">The visa sticker allows entry; immigration approval at the port of entry is separate. Within <b>30 calendar days</b> of arrival, visit the Instituto Nacional de Migración (INM) to issue your resident card.</p></div></div>
+
+  <div class="tip" data-i18n="m2.tip"><b>Important distinction:</b> a visa is not a right of entry, and it does not guarantee the resident card. Keep your passport, visa stamp and entry migratory slip safe until the INM card is in your hands.</div>
+</section>
+
+<!-- M3 -->
+<section class="view" id="m3">
+  <div class="module-hero">
+    <img src="assets/housing.jpg" alt="Residential apartment street">
+    <div class="body"><div class="num">MODULE 03</div><h3 data-i18n="m3.h3">The Housing Hunt</h3><p data-i18n="m3.p">Match a colonia to your persona, understand lease mechanics, and spot listings that should be walked away from.</p></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m3.c1h">Persona → neighborhood</h4><ul>
+      <li data-i18n="m3.c1l1"><b>Remote worker:</b> Roma Norte, Condesa, Juárez — café and coworking density.</li>
+      <li data-i18n="m3.c1l2"><b>Family:</b> Polanco, Del Valle, Coyoacán — quieter streets, services and schools nearby.</li>
+      <li data-i18n="m3.c1l3"><b>Value long-stay:</b> Roma Sur, Narvarte, Del Valle, Juárez — 30–40% below the prime core.</li>
+      <li data-i18n="m3.c1l4"><b>Retiree / calm:</b> Coyoacán, Del Valle, Condesa.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m3.c2h">Lease basics</h4><ul>
+      <li data-i18n="m3.c2l1">Deposit commonly around one month's rent; clarify refund conditions in writing.</li>
+      <li data-i18n="m3.c2l2">Confirm what is furnished: appliances, bedding, kitchenware, internet.</li>
+      <li data-i18n="m3.c2l3">Check whose name utilities, internet and gas sit under, and how transfers work.</li>
+      <li data-i18n="m3.c2l4">Longer local leases often beat monthly Airbnb pricing; negotiate a local rate for 3–12 months.</li>
+    </ul></div>
+  </div>
+
+  <h3 data-i18n="m3.h3b">Listing red flags</h3>
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m3.c3h">Walk away if…</h4><ul>
+      <li data-i18n="m3.c3l1">Pressure to send a deposit off-platform or in untraceable cash.</li>
+      <li data-i18n="m3.c3l2">No written contract or refusal to show ID / ownership proof.</li>
+      <li data-i18n="m3.c3l3">Photos that don't match the live tour, or repeated "just today" urgency.</li>
+      <li data-i18n="m3.c3l4">Price well below the colonia's normal range with no explanation.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m3.c4h">Before signing</h4><ul>
+      <li data-i18n="m3.c4l1">Tour in person or via live video; check water pressure, hot water, wifi signal and locks.</li>
+      <li data-i18n="m3.c4l2">Confirm neighborhood noise at night and proximity to metro / Metrobús.</li>
+      <li data-i18n="m3.c4l3">Note meter readings and existing damage on a handover sheet.</li>
+    </ul></div>
+  </div>
+
+  <div class="tip" data-i18n="m3.tip">Use the <b>Rental Comparison</b> template in the Template Vault to score 3–5 listings side by side before committing.</div>
+</section>
+
+<!-- M4 -->
+<section class="view" id="m4">
+  <div class="module-hero">
+    <img src="assets/daily.jpg" alt="Settled-in apartment kitchen">
+    <div class="body"><div class="num">MODULE 04</div><h3 data-i18n="m4.h3">Daily Life Setup</h3><p data-i18n="m4.p">Utilities, connectivity, banking, insurance and schooling — the systems that turn a rental into a home.</p></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m4.c1h">Utilities &amp; internet</h4><ul>
+      <li data-i18n="m4.c1l1">Electricity, water and gas bills vary by season; budget $40–80/month for utilities.</li>
+      <li data-i18n="m4.c1l2">Central colonias commonly have 200–500 Mbps fiber; confirm the included speed in the lease.</li>
+      <li data-i18n="m4.c1l3">Water delivery (garrafón) runs ~45–60 MXN per 20L jug.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m4.c2h">SIM &amp; banking</h4><ul>
+      <li data-i18n="m4.c2l1">Prepaid Telcel / AT&amp;T SIM at OXXO, or an eSIM before arrival; plans around $20/month level.</li>
+      <li data-i18n="m4.c2l2">Opening a local bank account usually requires temporary/permanent residency status; international cards work for most payments.</li>
+      <li data-i18n="m4.c2l3">Keep a small local-cash reserve for markets and street vendors.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m4.c3h">Health insurance</h4><ul>
+      <li data-i18n="m4.c3l1">Compare international travel or health plans before arrival; entry-level plans start around $40–50/month.</li>
+      <li data-i18n="m4.c3l2">Private hospitals (ABC, Ángeles, Médica Sur) are the serious-care tier; pharmacy consultorios cover minor issues.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m4.c4h">Schools (families)</h4><ul>
+      <li data-i18n="m4.c4l1">International school tuition runs roughly $8,900–19,100/year depending on school and grade, before one-off admission fees.</li>
+      <li data-i18n="m4.c4l2">House-hunt school-first: a school on the wrong side of the city can turn two daily trips into hours of traffic.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- M5 -->
+<section class="view" id="m5">
+  <div class="module-hero">
+    <img src="assets/money.jpg" alt="Wallet, cards and pesos">
+    <div class="body"><div class="num">MODULE 05</div><h3 data-i18n="m5.h3">Money, Taxes &amp; Legal Basics</h3><p data-i18n="m5.p">Practical money movement, FX awareness and the records you should keep from day one.</p></div>
+  </div>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="m5.audio">▶ Audio summary · Money &amp; daily setup · 55 sec</div>
+    <audio controls preload="none" src="assets/audio/money-setup.mp3"></audio>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="m5.c1h">Day-to-day money</h4><ul>
+      <li data-i18n="m5.c1l1">Most shops and ride apps take international cards; cash remains essential at markets and street stalls.</li>
+      <li data-i18n="m5.c1l2">Withdraw at bank-branch or mall ATMs; decline dynamic currency conversion.</li>
+      <li data-i18n="m5.c1l3">Track the peso-dollar rate monthly; it moves and affects how far foreign income stretches.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="m5.c2h">Records to keep</h4><ul>
+      <li data-i18n="m5.c2l1">Passport, visa, migratory slip and resident card — digital and physical copies in separate places.</li>
+      <li data-i18n="m5.c2l2">Lease, utility contracts, insurance policy and employment / income proof.</li>
+      <li data-i18n="m5.c2l3">Receipts for any high-value local purchases, in case of warranty or border questions.</li>
+    </ul></div>
+  </div>
+
+  <div class="warn" data-i18n="m5.warn"><b>Tax &amp; legal disclaimer:</b> Residency days, income source and nationality determine tax obligations. This module raises awareness only — it is not tax, legal or immigration advice. Engage a Mexican-licensed accountant or immigration lawyer for your specific situation, and confirm RFC registration requirements with official sources.</div>
+</section>
+
+<!-- M6 -->
+<section class="view" id="m6">
+  <div class="module-hero">
+    <img src="assets/settle.jpg" alt="Afternoon in a city park">
+    <div class="body"><div class="num">MODULE 06</div><h3 data-i18n="m6.h3">Your First 90 Days</h3><p data-i18n="m6.p">A week-by-week settling-in plan that balances admin, exploration and social integration.</p></div>
+  </div>
+
+  <div class="step"><div class="n">1</div><div><h4 data-i18n="m6.s1h">Week 1 · Settle the basics</h4><p data-i18n="m6.s1p">SIM and cash, transport card, nearest services, safe spots for earthquakes, emergency numbers saved. Unpack and establish a routine sleep and meal rhythm at altitude.</p></div></div>
+  <div class="step"><div class="n">2</div><div><h4 data-i18n="m6.s2h">Weeks 2–4 · Complete admin</h4><p data-i18n="m6.s2p">INM resident card appointment (within 30 days), insurance registration, any local bank or telecom steps, school visits if applicable. Explore your colonia on foot and try one metro journey per week.</p></div></div>
+  <div class="step"><div class="n">3</div><div><h4 data-i18n="m6.s3h">Months 2–3 · Integrate</h4><p data-i18n="m6.s3p">Join a coworking, class or community group; build regular favorite spots; learn the neighborhoods beyond your own; review your budget against the first two months of actual spending.</p></div></div>
+
+  <div class="checklist" id="m6check" style="margin-top:20px"></div>
+  <div class="progress"><i id="m6bar"></i></div>
+  <div class="progress-note" id="m6note"></div>
+</section>
+
+<!-- TEMPLATES -->
+<section class="view" id="templates">
+  <h2 class="section-title" data-i18n="t.title">Template Vault</h2>
+  <p class="section-lede" data-i18n="t.lede">Four reusable files accompany the course. Open them in any spreadsheet app; fill one row per document, listing or month. English and Chinese versions of each file are included.</p>
+
+  <div class="tpl"><div class="ic">📄</div><div class="body"><h4 data-i18n="t.c1h">Document Checklist</h4><p data-i18n="t.c1p">Track passport, visa, birth/marriage certificates, apostilles, translations, income proof and their status.</p></div><div class="links"><a href="assets/templates/document-checklist.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/document-checklist-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">🗓</div><div class="body"><h4 data-i18n="t.c2h">Relocation Timeline</h4><p data-i18n="t.c2p">Stage-by-stage tasks from six months out to arrival day, with timing and status columns.</p></div><div class="links"><a href="assets/templates/relocation-timeline.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/relocation-timeline-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">💰</div><div class="body"><h4 data-i18n="t.c3h">Budget Tracker</h4><p data-i18n="t.c3p">Estimated vs actual monthly costs across rent, food, transport, utilities, insurance and misc.</p></div><div class="links"><a href="assets/templates/budget-tracker.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/budget-tracker-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">📋</div><div class="body"><h4 data-i18n="t.c4h">Rental Comparison</h4><p data-i18n="t.c4p">Score three listings side by side on price, location, transit, furnishing, noise and lease terms.</p></div><div class="links"><a href="assets/templates/rental-comparison.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/rental-comparison-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <p style="font-size:12.5px;color:var(--muted);margin-top:4px" data-i18n="t.zhnote">Each template above includes both English and Chinese versions.</p>
+</section>
+
+<!-- FAQ -->
+<section class="view" id="faq">
+  <h2 class="section-title" data-i18n="f.title">Frequently Asked Questions</h2>
+  <p class="section-lede" data-i18n="f.lede">Common questions about the course and how delivery works.</p>
+
+  <div class="faq-item"><summary data-i18n="f.q1">Do I need a visa just to try living in CDMX?</summary><div class="ans" data-i18n="f.a1">For stays under 180 days, the visitor stamp at the port of entry may be enough; the officer decides the length. If you plan to settle long-term, the Temporary Resident Visa route covered in Module 2 is the reliable path.</div></div>
+  <div class="faq-item"><summary data-i18n="f.q2">Is this course legal or immigration advice?</summary><div class="ans" data-i18n="f.a2">No. It provides general educational information and process orientation. Requirements change and vary by consulate; always verify official sources and consult licensed professionals for your personal case.</div></div>
+  <div class="faq-item"><summary data-i18n="f.q3">How do I access the course after purchase?</summary><div class="ans" data-i18n="f.a3">You receive access to this digital hub for 6 months from purchase; the access link and files are delivered to your email. Audio summaries and template files are included in the hub; nothing ships physically.</div></div>
+  <div class="faq-item"><summary data-i18n="f.q4">Can I work remotely for a foreign employer from CDMX?</summary><div class="ans" data-i18n="f.a4">Remote work paid abroad is generally compatible with temporary residency; working for a Mexican employer on local salary requires separate immigration authorization. Confirm your specific situation with the consulate and qualified counsel.</div></div>
+  <div class="faq-item"><summary data-i18n="f.q5">What if my situation is family-based, student or investor?</summary><div class="ans" data-i18n="f.a5">Module 2 lists these alternate qualifiers at a high level; the documents and thresholds differ, so follow the consulate guidance for your route rather than assuming the income route applies.</div></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY</div>
+    <div data-i18n="f.line">CDMX Relocation Blueprint · Product 02 in the Mexico City living series.</div>
+    <div class="disclaimer" data-i18n="f.disc"><b>Important:</b> This product provides general educational information only. It is not immigration, legal, tax, medical or financial advice. Visa thresholds, fees, routes and regulations change frequently — verify current requirements with Mexican consulates, the INM and licensed professionals before acting. Emergency services in Mexico: 911.</div>
+  </div>
+</footer>
+
+<script>
+// ===== Safe storage =====
+const memoryStore = {};
+const safeStore = {
+  get(k){ try { const v = localStorage.getItem(k); return v === null ? null : v; } catch(e){ return memoryStore[k] ?? null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){ memoryStore[k]=v; } },
+  remove(k){ try { localStorage.removeItem(k); } catch(e){ delete memoryStore[k]; } }
+};
+
+const ZH = {
+  "tag":"产品 02 · 迁居蓝图",
+  "eyebrow":"六模块墨西哥城迁居系统",
+  "title":"墨西哥城迁居蓝图",
+  "sub":"面向潜在与新移民的结构化迁居课程：适配评估、签证居留路线、住房、日常开通、金钱基础与头九十天——每个阶段都配有可复用模板。",
+  "meta1":"形式：<b>自学课程中心</b>",
+  "meta2":"包含：<b>6 个模块 · 3 段音频总结 · 4 份模板文件 · 时间规划表</b>",
+  "meta3":"访问期限：<b>购买后 6 个月</b>",
+  "nav.welcome":"欢迎", "nav.m1":"模块1 · 是否适合你", "nav.m2":"模块2 · 签证与居留", "nav.m3":"模块3 · 找房",
+  "nav.m4":"模块4 · 日常开通", "nav.m5":"模块5 · 金钱与法律基础", "nav.m6":"模块6 · 头 90 天", "nav.templates":"模板库", "nav.faq":"常见问题",
+  "w.title":"逐模块规划你的迁居",
+  "w.lede":"蓝图把令人茫然的搬家拆成有顺序的路线图。按顺序学习各模块；每个模块包含一节课程、一段音频总结和一份可复用到你自己档案里的模板。",
+  "w.audio":"▶ 课程介绍 · 40 秒",
+  "w.p1":"模块 1", "w.p2":"模块 2", "w.p3":"模块 3", "w.p4":"模块 4", "w.p5":"模块 5", "w.p6":"模块 6",
+  "w.c1h":"适配评估", "w.c1p":"墨西哥城是否匹配你的生活方式、预算和时间计划？",
+  "w.c2h":"签证与居留", "w.c2p":"游客与临时居民之分、材料、领事馆与 INM 流程。",
+  "w.c3h":"住房", "w.c3p":"街区匹配、租约条款和房源风险信号。",
+  "w.c4h":"日常开通", "w.c4p":"水电网、通讯、银行、保险、学校。",
+  "w.c5h":"金钱与法律", "w.c5p":"汇款、汇率、留存记录与税务居民意识。",
+  "w.c6h":"头 90 天", "w.c6p":"按周推进的安顿计划与融入清单。",
+  "w.tip":"<b>学习方式：</b>每个模块先讲全局，再讲实操步骤，最后是模板。每次学习一个模块，边学边填模板，出发前你的迁居档案就已齐备。",
+  "tr.h":"你可以期待什么",
+  "tr.h1":"6 个月访问期", "tr.p1":"购买后课程中心开放六个月；访问链接与文件通过邮箱送达。",
+  "tr.h2":"中英双语", "tr.p2":"页面语言可随时切换；课程内容和每份模板均含英文与中文版本。",
+  "tr.h3":"即时数字交付", "tr.p3":"自助数字课程，无实体寄送；访问与技术问题按 Whop 政策处理。",
+  "m1.h3":"墨西哥城适合你吗？", "m1.p":"在办手续前先测试适配度：生活方式、预算、气候，以及你需要明知后接受的取舍。",
+  "m1.c1h":"谁在这里如鱼得水",
+  "m1.c1l1":"<b>远程工作者：</b>中心区网络快，咖啡馆和共享办公密集，与美国中部同时区。",
+  "m1.c1l2":"<b>家庭：</b>国际学校、绿树街区，成本低于北美首府城市。",
+  "m1.c1l3":"<b>退休人士：</b>舒适的私立医疗、适合步行的日常，美元收入购买力强。",
+  "m1.c1l4":"<b>情侣与独居：</b>中心可步行街区的大城市文化、美食和社交场景。",
+  "m1.c2h":"需要权衡的取舍",
+  "m1.c2l1":"海拔 2,240 米——需要几天适应。",
+  "m1.c2l2":"交通拥堵；多数居民不开车。",
+  "m1.c2l3":"2–5 月可能有雾霾；5–10 月午后有雨。",
+  "m1.c2l4":"西班牙语能力会显著改善日常生活。",
+  "m1.h3b":"成本基准（单人，中心区，2026）",
+  "m1.th1":"档位", "m1.th2":"月度合计", "m1.th3":"包含内容",
+  "m1.r1k":"节俭型", "m1.r1v":"性价比街区、自己做饭、公共交通",
+  "m1.r2k":"舒适型", "m1.r2v":"Roma/Condesa 级房租、经常外食、夜间打车",
+  "m1.r3k":"宽裕型", "m1.r3v":"Polanco 级住房、高级餐厅、高端服务",
+  "m1.h3c":"适配自查",
+  "m2.h3":"签证与居留路线图", "m2.p":"了解各路线、财力门槛，以及“先领事馆、后 INM”的两步流程。",
+  "m2.audio":"▶ 音频总结 · 签证与居留 · 55 秒",
+  "m2.c1place":"短住", "m2.c1h":"游客/旅游章",
+  "m2.c1l1":"入境口岸签发，最长 180 天；具体时长由边检官员决定——如今很多访客只拿到 30–90 天。",
+  "m2.c1l2":"可能要求出示续程机票和住宿证明。",
+  "m2.c1l3":"持此身份不能为墨西哥雇主工作。",
+  "m2.c2place":"长住", "m2.c2h":"临时居留签证",
+  "m2.c2l1":"适用于超过 180 天、最长 4 年的停留。",
+  "m2.c2l2":"须在迁居前<b>于境外</b>的墨西哥领事馆或使馆申请。",
+  "m2.c2l3":"外国雇主支付薪酬的远程工作通常兼容；本地受薪雇佣需另行取得 INM 授权。",
+  "m2.h3b":"财力要求（领事馆口径，以最新数字为准）",
+  "m2.th1":"路线", "m2.th2":"典型要求", "m2.th3":"证明材料",
+  "m2.r1k":"收入 / 养老金", "m2.r1v":"近 6 个月月净收入约 $4,000–4,500 美元", "m2.r1e":"工资单/养老金证明 + 银行流水；必要时附在职证明",
+  "m2.r2k":"存款 / 投资", "m2.r2v":"近 12 个月月均余额约 $70,000 美元", "m2.r2e":"盖章或官方银行流水，逐月完整提供",
+  "m2.r3k":"其他资格", "m2.r3v":"与居民有亲属关系、墨西哥房产、投资、学生入学", "m2.r3e":"按领事馆指引提供证明/产权证/入学证明",
+  "m2.warn":"<b>门槛因领事馆而异，并随每年 UMA 标准更新。</b>预约前务必向你居住国对应的墨西哥领事馆核实确切数字、认可材料和翻译规则。",
+  "m2.h3c":"分步流程",
+  "m2.s1h":"准备材料", "m2.s1p":"有效护照（6 个月以上有效期、空白页）、护照照片、申请表；第三国申请者需合法居留证明；财力证明。墨西哥或申请国境外签发的文件可能需要<b>海牙认证/法律认证</b>以及<b>官方西班牙语翻译</b>。",
+  "m2.s2h":"预约领事馆面签", "m2.s2p":"通过 MiConsulado 门户（citas.sre.gob.mx）选择签证部门。领事费约 $56 美元；即使签证未获批也不退费。",
+  "m2.s3h":"面签与生物信息采集", "m2.s3p":"亲自到场：材料审核、领事面谈（英语或西语）、拍照、录指纹。审核最长约十个工作日；决定为最终结果。",
+  "m2.s4h":"入境并领取居留卡", "m2.s4p":"签证贴纸允许入境；入境口岸的移民审批是另一环节。抵达后 <b>30 个自然日内</b>前往国家移民局（INM）办理居留卡。",
+  "m2.tip":"<b>重要区分：</b>签证不等于入境权，也不保证拿到居留卡。在 INM 卡片到手前，妥善保管护照、签证章和入境移民单。",
+  "m3.h3":"找房", "m3.p":"按人群匹配街区，理解租约机制，识别应当放弃的房源。",
+  "m3.c1h":"人群 → 街区",
+  "m3.c1l1":"<b>远程工作者：</b>Roma Norte、Condesa、Juárez——咖啡馆与共享办公密集。",
+  "m3.c1l2":"<b>家庭：</b>Polanco、Del Valle、Coyoacán——街道安静，配套和学校就近。",
+  "m3.c1l3":"<b>性价比长住：</b>Roma Sur、Narvarte、Del Valle、Juárez——比核心区低 30–40%。",
+  "m3.c1l4":"<b>退休/偏好安静：</b>Coyoacán、Del Valle、Condesa。",
+  "m3.c2h":"租约基础",
+  "m3.c2l1":"押金通常约一个月租金；退款条件须书面写明。",
+  "m3.c2l2":"确认带哪些家具家电：电器、床品、厨具、网络。",
+  "m3.c2l3":"确认水电网燃气挂在谁名下，如何过户。",
+  "m3.c2l4":"较长的本地租约常优于按月 Airbnb 价格；3–12 个月可谈本地价。",
+  "m3.h3b":"房源风险信号",
+  "m3.c3h":"遇到以下情况直接放弃",
+  "m3.c3l1":"施压要求站外转账或使用不可追踪现金付押金。",
+  "m3.c3l2":"无书面合同，或拒绝出示身份证件/产权证明。",
+  "m3.c3l3":"照片与实地看房不符，或反复催促“仅限今天”。",
+  "m3.c3l4":"价格远低于该街区正常区间且无合理解释。",
+  "m3.c4h":"签约前",
+  "m3.c4l1":"实地或视频直播看房；检查水压、热水、wifi 信号和门锁。",
+  "m3.c4l2":"确认夜间噪音和距地铁/Metrobús 的距离。",
+  "m3.c4l3":"在交接单上记下表数和已有破损。",
+  "m3.tip":"承诺租房前，用模板库中的<b>租房对比表</b>把 3–5 个房源并排打分。",
+  "m4.h3":"日常生活开通", "m4.p":"水电网、通讯、银行、保险和学校——让出租屋变成家的系统。",
+  "m4.c1h":"水电网",
+  "m4.c1l1":"电费、水费、燃气费随季节波动；水电网预算 $40–80/月。",
+  "m4.c1l2":"中心街区常见 200–500 Mbps 光纤；租约中确认包含的网速。",
+  "m4.c1l3":"桶装水（garrafón）每 20 升约 45–60 比索。",
+  "m4.c2h":"SIM 与银行",
+  "m4.c2l1":"OXXO 购买 Telcel / AT&T 预付费 SIM，或抵达前用 eSIM；套餐约 $20/月档。",
+  "m4.c2l2":"开立本地银行账户通常需要临时/永久居留身份；多数支付可用国际卡。",
+  "m4.c2l3":"在集市和街边摊贩处保留少量本地现金。",
+  "m4.c3h":"医疗保险",
+  "m4.c3l1":"出发前对比国际旅行或健康保险；入门计划约 $40–50/月起。",
+  "m4.c3l2":"私立医院（ABC、Ángeles、Médica Sur）是重症层级；药店诊所处理小毛病。",
+  "m4.c4h":"学校（家庭）",
+  "m4.c4l1":"国际学校学费约 $8,900–19,100/年（因学校和年级而异），另计一次性入学费用。",
+  "m4.c4l2":"先定学校再找房：学校在城市另一侧，每天两趟通勤可能变成数小时堵车。",
+  "m5.h3":"金钱、税务与法律基础", "m5.p":"实用的资金划转、汇率意识，以及从第一天起就应留存的记录。",
+  "m5.audio":"▶ 音频总结 · 金钱与日常开通 · 55 秒",
+  "m5.c1h":"日常用钱",
+  "m5.c1l1":"多数商店和打车软件收国际卡；集市和街边摊仍离不开现金。",
+  "m5.c1l2":"在银行网点或商场 ATM 取款；拒绝动态货币兑换。",
+  "m5.c1l3":"每月关注比索兑美元汇率；汇率波动影响境外收入的购买力。",
+  "m5.c2h":"应留存的记录",
+  "m5.c2l1":"护照、签证、移民单和居留卡——电子与纸质副本分开放存。",
+  "m5.c2l2":"租约、水电合同、保险单和在职/收入证明。",
+  "m5.c2l3":"本地大额消费保留收据，以备保修或边检查询。",
+  "m5.warn":"<b>税务与法律免责：</b>居留天数、收入来源和国籍决定纳税义务。本模块仅作意识提醒——不构成税务、法律或移民建议。具体情况请咨询墨西哥持牌会计师或移民律师，并通过官方渠道确认 RFC 注册要求。",
+  "m6.h3":"你的头 90 天", "m6.p":"按周推进的安顿计划，平衡手续办理、探索和社交融入。",
+  "m6.s1h":"第 1 周 · 落实基础", "m6.s1p":"SIM 与现金、交通卡、最近服务点、地震避险位置、紧急电话存入手机。拆包整理，在高原建立规律的睡眠和进餐节奏。",
+  "m6.s2h":"第 2–4 周 · 办齐手续", "m6.s2p":"预约 INM 居留卡（30 天内）、保险登记、必要的本地银行或通讯步骤，如适用则看学校。步行探索街区，每周试乘一次地铁。",
+  "m6.s3h":"第 2–3 月 · 融入", "m6.s3p":"加入共享办公、课程或社群；建立常去的固定去处；了解自己街区以外的区域；对照前两个月实际支出复盘预算。",
+  "t.title":"模板库",
+  "t.lede":"课程配套四份可复用文件。用任意电子表格软件打开；每份文件按一份证件、一个房源或一个月填一行。每份文件均含英文与中文两个版本。",
+  "t.c1h":"证件清单", "t.c1p":"跟踪护照、签证、出生/结婚证明、海牙认证、翻译件、收入证明及状态。",
+  "t.c2h":"迁居时间线", "t.c2p":"从提前六个月到抵达日的分阶段任务，含时间节点和状态列。",
+  "t.c3h":"预算跟踪表", "t.c3p":"房租、饮食、交通、水电、保险、杂项的预估与实际月度开销对比。",
+  "t.c4h":"租房对比表", "t.c4p":"在价格、地段、交通、家具、噪音和租约条款上并排对比三个房源。",
+  "t.dl":"下载 CSV（英）", "t.dlzh":"下载 CSV（中文）", "t.zhnote":"每份模板上方均附英文与中文两个版本。",
+  "f.title":"常见问题", "f.lede":"关于课程和交付方式的常见问题。",
+  "f.q1":"只是想试住在墨西哥城，也需要签证吗？", "f.a1":"停留 180 天以内，入境口岸的游客章可能足够；时长由官员决定。若计划长期定居，模块 2 所讲的临时居留签证路线是稳妥路径。",
+  "f.q2":"本课程是法律或移民建议吗？", "f.a2":"不是。本产品提供通用教育信息和流程指引。要求会变动且因领事馆而异；个人个案务必核实官方渠道并咨询持牌专业人士。",
+  "f.q3":"购买后如何访问课程？", "f.a3":"购买后可在 6 个月内访问本数字课程中心；访问链接和文件将发送至你的邮箱。音频总结和模板文件均包含在中心内；无实体商品寄送。",
+  "f.q4":"可以从墨西哥城为外国雇主远程工作吗？", "f.a4":"境外付酬的远程工作通常与临时居留兼容；为墨西哥雇主领取本地薪资则需另行取得移民授权。具体情况请向领事馆和合格律师确认。",
+  "f.q5":"如果我的情况是家庭团聚、学生或投资类呢？", "f.a5":"模块 2 概括列出了这些替代资格；材料和门槛不同，请按你对应路线的领事馆指引办理，不要默认适用收入路线。",
+  "f.line":"墨西哥城迁居蓝图 · 墨西哥城生活系列产品 02。",
+  "f.disc":"<b>重要提示：</b>本产品仅提供通用教育信息，不构成移民、法律、税务、医疗或财务建议。签证门槛、费用、路线和规定经常变动——行动前请向墨西哥领事馆、INM 和持牌专业人士核实最新要求。墨西哥紧急服务电话：911。"
+};
+
+const chips=document.querySelectorAll('.chips button');
+const views=document.querySelectorAll('.view');
+function show(id){views.forEach(v=>v.classList.toggle('active',v.id===id));chips.forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});}
+chips.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+
+let lang = safeStore.get('mdt_lang') || 'en';
+function applyLang(l){
+  lang = l; safeStore.set('mdt_lang', l);
+  document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    if(l === 'zh'){
+      if(el.dataset.orig === undefined) el.dataset.orig = el.innerHTML;
+      el.innerHTML = ZH[el.dataset.i18n] ?? el.dataset.orig;
+    } else if(el.dataset.orig !== undefined){
+      el.innerHTML = el.dataset.orig;
+    }
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  renderChecklists();
+}
+
+function makeChecklist(containerId,barId,noteId,key,items){
+  try {
+    const el=document.getElementById(containerId);
+    if(!el) return;
+    let state=JSON.parse(safeStore.get(key)||'{}');
+    function render(){
+      el.innerHTML='';let total=0,done=0;
+      items.forEach(([en,zh])=>{
+        const k=en;total++;const checked=!!state[k];if(checked)done++;
+        const row=document.createElement('label');row.className='check-item'+(checked?' done':'');
+        row.innerHTML=`<input type="checkbox" ${checked?'checked':''}><span>${lang==='zh'?zh:en}</span>`;
+        row.querySelector('input').addEventListener('change',e=>{state[k]=e.target.checked;safeStore.set(key,JSON.stringify(state));render();});
+        el.appendChild(row);
+      });
+      const bar=document.getElementById(barId), note=document.getElementById(noteId);
+      if(bar) bar.style.width=(total?done/total*100:0)+'%';
+      if(note) note.textContent = lang==='zh' ? `${done}/${total} 已完成` : `${done} of ${total} complete`;
+    }
+    el._render=render; render();
+  } catch(err){ console.error('Checklist error:', containerId, err); }
+}
+makeChecklist('m1check','m1bar','m1note','mdt_p2_m1',[
+  ['I have compared my income/savings against the consulate solvency routes','我已对照领事馆财力路线评估收入/存款'],
+  ['I have weighed altitude, traffic, smog season and language trade-offs','我已权衡高原、交通、雾霾季节和语言等取舍'],
+  ['I have built a realistic monthly budget for my chosen colonia','我已为目标街区制定现实的月度预算'],
+  ['I have identified my persona: remote worker, family, retiree, couple or solo','我已明确自身类型：远程工作者、家庭、退休人士、情侣或独居'],
+  ['I know the seasons and what to pack for my arrival month','我已了解季节并准备好抵达月份的行李']
+]);
+makeChecklist('m6check','m6bar','m6note','mdt_p2_m6',[
+  ['SIM, local cash and transport card arranged','已备好 SIM、本地现金和交通卡'],
+  ['Emergency numbers and hotel address saved offline','紧急电话和酒店地址已离线保存'],
+  ['INM resident card appointment booked within 30 days of arrival','抵达 30 天内已预约 INM 居留卡办理'],
+  ['Insurance policy active; nearest clinic and hospital identified','保险已生效；已确定最近的诊所和医院'],
+  ['Lease, utilities and internet confirmed in writing','租约、水电和网络已书面确认'],
+  ['School visits completed (if applicable)','已完成看学校（如适用）'],
+  ['One coworking, class or community group joined','已加入一个共享办公、课程或社群'],
+  ['First-month actual spending reviewed against budget','已对照预算复盘首月实际支出']
+]);
+function renderChecklists(){
+  document.querySelectorAll('.checklist').forEach(el=>{ if(el._render) el._render(); });
+}
+applyLang(lang);
+</script>
+</body>
+</html>

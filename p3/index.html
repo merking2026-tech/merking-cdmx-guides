@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Expat Living Vault: Mexico City — Merking Digital Technology</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --ink:#1c1813; --charcoal:#211c15; --paper:#f4eee2; --card:#fffdf8;
+  --gold:#c9a25e; --gold-soft:#e7cf9a; --gold-deep:#9a7a3e;
+  --muted:#6f6558; --line:#e7dcc8; --green:#5c7a5e; --red:#a8543f;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;font-size:15.5px}
+img{max-width:100%;display:block}
+a{color:var(--gold-deep)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.topbar{background:var(--charcoal);color:var(--gold-soft);border-bottom:1px solid #3a3226}
+.topbar .wrap{display:flex;align-items:center;gap:12px;padding:14px 22px}
+.topbar img{width:38px;height:38px;border-radius:6px;object-fit:cover}
+.topbar .brand{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:14px}
+.topbar .brand small{display:block;font-family:var(--sans);font-weight:400;letter-spacing:.22em;font-size:10px;color:#b9a888;margin-top:2px}
+.topbar .tag{margin-left:auto;font-size:12px;color:#cbb98f;letter-spacing:.08em}
+.lang{display:flex;gap:4px;margin-left:10px}
+.lang button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-size:11px;padding:4px 11px;border-radius:12px;cursor:pointer;font-family:var(--sans)}
+.lang button.active{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+.hero{position:relative;color:#fff;min-height:480px;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,14,8,.4) 0%,rgba(18,14,8,.6) 55%,rgba(18,14,8,.94) 100%)}
+.hero .wrap{position:relative;z-index:2;padding:60px 22px 44px}
+.hero .eyebrow{color:var(--gold-soft);letter-spacing:.3em;font-size:12px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5vw,56px);font-weight:900;line-height:1.1;max-width:760px}
+.hero p.sub{margin-top:16px;font-size:17px;color:#efe7d8;max-width:640px;font-weight:300}
+.hero .meta{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap;font-size:13px;color:#d9c9a6}
+.hero .meta span b{color:#fff}
+.chips{position:sticky;top:0;z-index:30;background:var(--charcoal);border-top:1px solid #3a3226}
+.chips .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 22px;scrollbar-width:thin}
+.chips button{background:transparent;border:1px solid #4a3f2e;color:#cdbd97;font-family:var(--sans);font-size:13px;padding:8px 14px;border-radius:20px;white-space:nowrap;cursor:pointer;transition:.2s}
+.chips button.active,.chips button:hover{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+.view{display:none;padding:44px 0 70px}
+.view.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2.section-title{font-family:var(--serif);font-size:30px;font-weight:700;margin-bottom:8px}
+.section-lede{color:var(--muted);max-width:680px;margin-bottom:30px;font-size:16px}
+h3{font-family:var(--serif);font-size:21px;margin:26px 0 12px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 14px rgba(80,62,32,.07)}
+.card h4{font-family:var(--serif);font-size:18px;margin-bottom:6px}
+.card .place{color:var(--gold-deep);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.card p{color:#4c443a;font-size:14px}
+.card .rent{display:inline-block;margin-top:12px;background:#f2e8d3;color:var(--gold-deep);border-radius:8px;padding:5px 10px;font-size:12.5px;font-weight:600}
+.card ul{margin:10px 0 0 18px;color:#4c443a;font-size:14px}
+.card ul li{margin:5px 0}
+.tip{border-left:3px solid var(--gold);background:#fbf4e4;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#5a4f3d;font-size:14px}
+.warn{border-left:3px solid var(--red);background:#fbeee9;padding:14px 18px;border-radius:0 10px 10px 0;margin:18px 0;color:#6b3d31;font-size:14px}
+.audio-box{background:var(--charcoal);color:var(--gold-soft);border-radius:14px;padding:18px 20px;margin:18px 0}
+.audio-box .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.audio-box audio{width:100%;margin-top:6px}
+.figure{border-radius:14px;overflow:hidden;margin:20px 0;border:1px solid var(--line)}
+.figure img{width:100%;height:280px;object-fit:cover}
+.figure figcaption{padding:10px 16px;font-size:12.5px;color:var(--muted);background:var(--card)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#f2e8d3;font-family:var(--serif);font-size:13.5px;color:var(--charcoal)}
+.timeline{display:grid;gap:16px}
+.tl{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.tl .phase{flex:0 0 120px;font-family:var(--serif);color:var(--gold-deep);font-weight:700}
+.tl h4{font-family:var(--serif);margin-bottom:6px}
+.tl p{font-size:14px;color:#4c443a}
+.tpl{display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.tpl .ic{flex:0 0 46px;height:46px;border-radius:12px;background:#f2e8d3;color:var(--gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px}
+.tpl .body{flex:1}
+.tpl h4{font-family:var(--serif);font-size:16px}
+.tpl p{font-size:13.5px;color:var(--muted)}
+.tpl .links{display:flex;gap:10px;flex-wrap:wrap;white-space:nowrap}
+.tpl .links a{font-size:13px;font-weight:600;white-space:nowrap}
+.bundle{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0}
+.bundle .b{background:var(--charcoal);color:#e9dcc0;border-radius:14px;padding:22px}
+.bundle .b .n{font-family:var(--serif);color:var(--gold);font-size:26px}
+.bundle .b h4{margin:6px 0;font-family:var(--serif)}
+.bundle .b p{font-size:13px;color:#b9a888}
+footer{background:var(--charcoal);color:#b9a888;padding:34px 0;font-size:12.5px}
+footer .wrap{display:grid;gap:10px}
+footer .brand{font-family:var(--serif);color:var(--gold-soft);letter-spacing:.12em}
+.disclaimer{background:#fbf4e4;border:1px dashed var(--gold);border-radius:12px;padding:16px 18px;color:#6b5c3e;font-size:12.5px;margin-top:20px}
+@media print{.chips,.topbar,.lang{display:none!important}.view{display:block!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <img src="assets/logo.jpg" alt="MDT logo">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY<small>CROSS-CULTURAL LIVING · MEXICO CITY</small></div>
+    <div class="tag" data-i18n="tag">Product 03 · Premium Vault</div>
+    <div class="lang">
+      <button data-lang="en" onclick="applyLang('en')">EN</button>
+      <button data-lang="zh" onclick="applyLang('zh')">中文</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <img class="bg" src="assets/hero.jpg" alt="Golden key over Mexico City dusk">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow">The Complete CDMX Living System · 6-Month Access</div>
+    <h1 data-i18n="title">The Expat Living Vault: Mexico City</h1>
+    <p class="sub" data-i18n="sub">The premium, all-in-one system for landing, settling and thriving in CDMX: both core guides, four persona playbooks, a 12-month roadmap, neighborhood dossiers, culture guides, emergency playbooks and the full template vault.</p>
+    <div class="meta">
+      <span data-i18n="meta1">Format: <b>Premium digital vault</b></span>
+      <span data-i18n="meta2">Includes: <b>2 core guides · 4 playbooks · 12-month roadmap · 8 dossiers · emergency system · templates</b></span>
+      <span data-i18n="meta3">Access: <b>6 months from purchase</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="chips">
+  <div class="wrap" id="chips">
+    <button data-view="welcome" class="active" data-i18n="nav.welcome">Welcome</button>
+    <button data-view="bundle" data-i18n="nav.bundle">What's Included</button>
+    <button data-view="personas" data-i18n="nav.personas">Persona Playbooks</button>
+    <button data-view="roadmap" data-i18n="nav.roadmap">12-Month Roadmap</button>
+    <button data-view="dossiers" data-i18n="nav.dossiers">Neighborhood Dossiers</button>
+    <button data-view="culture" data-i18n="nav.culture">Culture &amp; Hidden Gems</button>
+    <button data-view="emergency" data-i18n="nav.emergency">Emergency Playbooks</button>
+    <button data-view="directory" data-i18n="nav.directory">Curated Directory</button>
+    <button data-view="templates" data-i18n="nav.templates">Template Vault</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- WELCOME -->
+<section class="view active" id="welcome">
+  <h2 class="section-title" data-i18n="w.title">Welcome to the Vault</h2>
+  <p class="section-lede" data-i18n="w.lede">The Vault brings together everything needed for a confident move to Mexico City in one premium system — organized by stage, by persona and by situation, so you always know the next step.</p>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="w.audio">▶ Vault welcome · 35 sec</div>
+    <audio controls preload="none" src="assets/audio/welcome.mp3"></audio>
+  </div>
+
+  <div class="bundle">
+    <div class="b"><div class="n">02</div><h4 data-i18n="w.b1h">Core guides included</h4><p data-i18n="w.b1p">The Arrival Companion and the Relocation Blueprint, full versions.</p></div>
+    <div class="b"><div class="n">04</div><h4 data-i18n="w.b2h">Persona playbooks</h4><p data-i18n="w.b2p">Remote worker, family, retiree, couple/solo — tailored priorities and budgets.</p></div>
+    <div class="b"><div class="n">12</div><h4 data-i18n="w.b3h">Month-by-month roadmap</h4><p data-i18n="w.b3p">From arrival week to a fully integrated, thriving daily life.</p></div>
+    <div class="b"><div class="n">08</div><h4 data-i18n="w.b4h">Neighborhood dossiers</h4><p data-i18n="w.b4p">Deep profiles with amenities, edges and who each colonia suits.</p></div>
+  </div>
+
+  <div class="tip" data-i18n="w.tip"><b>How the Vault works:</b> Start in the Roadmap to place yourself on the timeline, open the Playbook matching your situation, and keep the Emergency Playbooks and Directory bookmarked for when you need them.</div>
+
+  <h3 data-i18n="tr.h">What you can expect</h3>
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="tr.h1">6-month access</h4><p data-i18n="tr.p1">Your Vault hub stays open for six months from purchase; the access link and files arrive by email.</p></div>
+    <div class="card"><h4 data-i18n="tr.h2">English / Chinese</h4><p data-i18n="tr.p2">Toggle the page language anytime; every guide and template ships in both English and Chinese.</p></div>
+    <div class="card"><h4 data-i18n="tr.h3">Instant digital delivery</h4><p data-i18n="tr.p3">A premium self-serve digital system with no shipping; access and technical issues are handled per Whop policy.</p></div>
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section class="view" id="bundle">
+  <h2 class="section-title" data-i18n="b.title">What's Included</h2>
+  <p class="section-lede" data-i18n="b.lede">Every asset in the Vault is digital and delivered instantly. No one-on-one consulting is included; the system is built to be self-serve and easy to follow.</p>
+
+  <div class="grid g2">
+    <div class="card"><div class="place" data-i18n="b.c1place">Core · Product 01</div><h4 data-i18n="b.c1h">CDMX Arrival Companion</h4><p data-i18n="b.c1p">First-72-hours playbook, eight neighborhood profiles, transport and money guides, food and daily life, safety and health, four Spanish audio phrase packs, budget planner and arrival checklist.</p></div>
+    <div class="card"><div class="place" data-i18n="b.c2place">Core · Product 02</div><h4 data-i18n="b.c2h">CDMX Relocation Blueprint</h4><p data-i18n="b.c2p">Six-module relocation course: fit assessment, visa and residency roadmap, housing hunt, daily setup, money and legal basics, first 90 days — with four spreadsheet templates.</p></div>
+    <div class="card"><div class="place" data-i18n="b.c3place">Exclusive · Vault only</div><h4 data-i18n="b.c3h">Four Persona Playbooks</h4><p data-i18n="b.c3p">Tailored priorities, neighborhood picks, budget shape and watch-outs for remote workers, families, retirees and couples/solos.</p></div>
+    <div class="card"><div class="place" data-i18n="b.c4place">Exclusive · Vault only</div><h4 data-i18n="b.c4h">12-Month Lifestyle Roadmap</h4><p data-i18n="b.c4p">Four phases: settle, deepen, integrate, thrive — with goals, milestones and review points for each quarter.</p></div>
+    <div class="card"><div class="place" data-i18n="b.c5place">Exclusive · Vault only</div><h4 data-i18n="b.c5h">Culture &amp; Hidden Gems</h4><p data-i18n="b.c5p">Markets, museums, parks, day trips and a festival calendar to build a social and cultural life, not just a residence.</p></div>
+    <div class="card"><div class="place" data-i18n="b.c6place">Exclusive · Vault only</div><h4 data-i18n="b.c6h">Emergency Playbooks &amp; Directory</h4><p data-i18n="b.c6p">Step-by-step responses for medical issues, theft or lost documents, earthquakes and transport incidents, plus a curated category directory.</p></div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="view" id="personas">
+  <h2 class="section-title" data-i18n="p.title">Persona Playbooks</h2>
+  <p class="section-lede" data-i18n="p.lede">One size does not fit a move. Each playbook below focuses on the decisions that matter most for your situation.</p>
+
+  <div class="figure"><img src="assets/persona.jpg" alt="Remote worker at a CDMX cafe"><figcaption data-i18n="p.cap">The remote-worker playbook centers on connectivity, coworking and neighborhood rhythm.</figcaption></div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="place" data-i18n="p.c1place">Playbook A</div>
+      <h4 data-i18n="p.c1h">Remote Worker</h4>
+      <ul>
+        <li data-i18n="p.c1l1"><b>Priority:</b> reliable wifi, quiet workspace, café/coworking density, US-Central time alignment.</li>
+        <li data-i18n="p.c1l2"><b>Neighborhood picks:</b> Roma Norte, Condesa, Juárez.</li>
+        <li data-i18n="p.c1l3"><b>Budget shape:</b> rent and coworking dominate; eating out flexible.</li>
+        <li data-i18n="p.c1l4"><b>Watch-outs:</b> verify included internet speed before signing; back up with a coworking day pass; keep video-call lighting and background in mind.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="p.c2place">Playbook B</div>
+      <h4 data-i18n="p.c2h">Family</h4>
+      <ul>
+        <li data-i18n="p.c2l1"><b>Priority:</b> school proximity, quiet streets, parks, private healthcare, safety feel.</li>
+        <li data-i18n="p.c2l2"><b>Neighborhood picks:</b> Polanco, Del Valle, Coyoacán, Condesa.</li>
+        <li data-i18n="p.c2l3"><b>Budget shape:</b> school fees and larger housing; grocery and activities steady.</li>
+        <li data-i18n="p.c2l4"><b>Watch-outs:</b> house-hunt school-first; map two daily routes before signing; confirm school admission deadlines and documents.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="p.c3place">Playbook C</div>
+      <h4 data-i18n="p.c3h">Retiree</h4>
+      <ul>
+        <li data-i18n="p.c3l1"><b>Priority:</b> walkable daily services, healthcare access, calm, value for fixed income.</li>
+        <li data-i18n="p.c3l2"><b>Neighborhood picks:</b> Coyoacán, Del Valle, Condesa, Narvarte.</li>
+        <li data-i18n="p.c3l3"><b>Budget shape:</b> comfortable mid-range; health insurance weighted by age.</li>
+        <li data-i18n="p.c3l4"><b>Watch-outs:</b> compare private insurance early; note altitude and walking slopes; identify nearby pharmacy clinic and hospital.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="place" data-i18n="p.c4place">Playbook D</div>
+      <h4 data-i18n="p.c4h">Couple / Solo</h4>
+      <ul>
+        <li data-i18n="p.c4l1"><b>Priority:</b> social scene, food, nightlife within walking distance, easy exploration.</li>
+        <li data-i18n="p.c4l2"><b>Neighborhood picks:</b> Roma Norte, Condesa, Juárez, Narvarte.</li>
+        <li data-i18n="p.c4l3"><b>Budget shape:</b> flexible; dining and experiences are the main variable.</li>
+        <li data-i18n="p.c4l4"><b>Watch-outs:</b> solo women apply extra caution at night on the metro and streets; build a local social routine in the first month.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="view" id="roadmap">
+  <h2 class="section-title" data-i18n="r.title">12-Month Lifestyle Roadmap</h2>
+  <p class="section-lede" data-i18n="r.lede">A quarter-by-quarter path from arrival chaos to settled, integrated life. Audio summary walks through the phases.</p>
+
+  <div class="audio-box">
+    <div class="label" data-i18n="r.audio">▶ Audio summary · The 12-month roadmap · 55 sec</div>
+    <audio controls preload="none" src="assets/audio/roadmap-12m.mp3"></audio>
+  </div>
+
+  <div class="timeline">
+    <div class="tl"><div class="phase" data-i18n="r.p1">Months 1–3<br>Settle</div><div><h4 data-i18n="r.s1h">Establish the basics</h4><p data-i18n="r.s1p">Connectivity, cash, transport card, housing signed, INM resident card processed, insurance active, nearest services mapped. Goal: daily life runs without constant translation or research.</p></div></div>
+    <div class="tl"><div class="phase" data-i18n="r.p2">Months 4–6<br>Deepen</div><div><h4 data-i18n="r.s2h">Learn the city beyond your colonia</h4><p data-i18n="r.s2p">Explore neighboring areas, build favorite regular spots, join a class, coworking or community group, test weekend trips outside the center. Review budget against actual spending and adjust housing or habits.</p></div></div>
+    <div class="tl"><div class="phase" data-i18n="r.p3">Months 7–9<br>Integrate</div><div><h4 data-i18n="r.s3h">Build local roots</h4><p data-i18n="r.s3p">Steady social circle, regular routines with neighbors and vendors, Spanish practice in real encounters, long-term services lined up (doctor, dentist, gym). Decide whether your housing still fits your settled life.</p></div></div>
+    <div class="tl"><div class="phase" data-i18n="r.p4">Months 10–12<br>Thrive</div><div><h4 data-i18n="r.s4h">Make it yours</h4><p data-i18n="r.s4p">Personalize the home, plan visits home or travel around the region, review residency renewal timing and long-term options, and mentor the habits that keep daily life calm and safe.</p></div></div>
+  </div>
+</section>
+
+<!-- DOSSIERS -->
+<section class="view" id="dossiers">
+  <h2 class="section-title" data-i18n="d.title">Neighborhood Dossiers</h2>
+  <p class="section-lede" data-i18n="d.lede">Eight profiles with character, amenities, edges and the residents each colonia suits. Rent figures are approximate furnished one-bedroom ranges, USD per month, 2026.</p>
+
+  <div class="grid g2">
+    <div class="card"><h4>Roma Norte</h4><p data-i18n="d.c1p">The expat and creative epicenter: art-deco streets, cafés, galleries, mezcal bars and the densest international scene. Very walkable; rents and tourist pressure are the trade-off.</p><ul><li data-i18n="d.c1l1"><b>Amenities:</b> coworking, specialty coffee, international dining, metro access</li><li data-i18n="d.c1l2"><b>Edge:</b> pricier; some streets feel visitor-facing</li><li data-i18n="d.c1l3"><b>Suits:</b> first-timers, remote workers, social solos</li></ul><span class="rent">$900–1,400</span></div>
+    <div class="card"><h4>Condesa</h4><p data-i18n="d.c2p">Leafy and residential around Parque México and Parque España; art-deco, dog-friendly, slightly calmer than Roma with a strong café culture.</p><ul><li data-i18n="d.c2l1"><b>Amenities:</b> parks, bakeries, design shops, quiet evenings</li><li data-i18n="d.c2l2"><b>Edge:</b> rents match Roma; weekend nightlife spills over</li><li data-i18n="d.c2l3"><b>Suits:</b> couples, families, walkability seekers</li></ul><span class="rent">$900–1,400</span></div>
+    <div class="card"><h4>Polanco</h4><p data-i18n="d.c3p">The upscale embassy quarter: luxury retail, fine dining, polished quiet streets next to Chapultepec Park. The safest-feeling and most expensive option.</p><ul><li data-i18n="d.c3l1"><b>Amenities:</b> embassies, premium services, museums, malls</li><li data-i18n="d.c3l2"><b>Edge:</b> very expensive; subdued nightlife</li><li data-i18n="d.c3l3"><b>Suits:</b> executives, established expats, families</li></ul><span class="rent">$1,200–2,000+</span></div>
+    <div class="card"><h4>Juárez / Cuauhtémoc</h4><p data-i18n="d.c4p">Central and revitalizing beside Paseo de la Reforma; better value than Roma with good transit and a lively restaurant-bar strip near Zona Rosa.</p><ul><li data-i18n="d.c4l1"><b>Amenities:</b> Reforma corridor, metro, value eats</li><li data-i18n="d.c4l2"><b>Edge:</b> quality varies block by block — inspect on site</li><li data-i18n="d.c4l3"><b>Suits:</b> budget-aware central dwellers</li></ul><span class="rent">$700–1,000</span></div>
+    <div class="card"><h4>Coyoacán</h4><p data-i18n="d.c5p">Village-like south: cobblestone plazas, colorful markets, Frida Kahlo's legacy, galleries and a strongly Mexican atmosphere. Lower rent, longer commute north.</p><ul><li data-i18n="d.c5l1"><b>Amenities:</b> markets, museums, cafes, greenery</li><li data-i18n="d.c5l2"><b>Edge:</b> commute to central areas; fewer coworking spots</li><li data-i18n="d.c5l3"><b>Suits:</b> families, retirees, culture-focused long-stayers</li></ul><span class="rent">$550–900</span></div>
+    <div class="card"><h4>Del Valle</h4><p data-i18n="d.c6p">Steady middle-class residential: leafy streets, everyday services, quiet nights and one of the city's safest-feeling boroughs. Limited international flavor.</p><ul><li data-i18n="d.c6l1"><b>Amenities:</b> supermarkets, parks, local commerce</li><li data-i18n="d.c6l2"><b>Edge:</b> fewer expat amenities and late-night options</li><li data-i18n="d.c6l3"><b>Suits:</b> families, retirees, quiet-value seekers</li></ul><span class="rent">$700–1,000</span></div>
+    <div class="card"><h4>Narvarte</h4><p data-i18n="d.c7p">A local favorite known for taquerías and authentic daily life; well served by metro and Metrobús, cheaper restaurants, less polished than the core.</p><ul><li data-i18n="d.c7l1"><b>Amenities:</b> food scene, transit, local markets</li><li data-i18n="d.c7l2"><b>Edge:</b> more Spanish on the street; less curated</li><li data-i18n="d.c7l3"><b>Suits:</b> value long-stayers, food lovers</li></ul><span class="rent">$700–1,000</span></div>
+    <div class="card"><h4>Roma Sur</h4><p data-i18n="d.c8p">Roma's calmer, more residential neighbor; same easy access with a local texture and lower price. A sensible base for stays of a month or more.</p><ul><li data-i18n="d.c8l1"><b>Amenities:</b> neighborhood commerce, transit, nearby parks</li><li data-i18n="d.c8l2"><b>Edge:</b> standard big-city street-level caution applies</li><li data-i18n="d.c8l3"><b>Suits:</b> budget-conscious longer leases</li></ul><span class="rent">$700–1,000</span></div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="view" id="culture">
+  <h2 class="section-title" data-i18n="cu.title">Culture &amp; Hidden Gems</h2>
+  <p class="section-lede" data-i18n="cu.lede">A curated map of how to spend your free time like a resident — markets, museums, parks, day trips and the calendar that anchors local life.</p>
+
+  <div class="figure"><img src="assets/culture.jpg" alt="Mexican folk-art wall and tiles"><figcaption data-i18n="cu.cap">Courtyards, murals and tiled streets are part of the city's daily visual language.</figcaption></div>
+
+  <div class="grid g3">
+    <div class="card"><h4 data-i18n="cu.c1h">Markets &amp; food halls</h4><ul>
+      <li data-i18n="cu.c1l1">Mercado de Medellín (Roma) — produce, spices, food stalls</li>
+      <li data-i18n="cu.c1l2">Mercado de Coyoacán — crafts, fruit, street food</li>
+      <li data-i18n="cu.c1l3">Local mercados in every colonia for weekly groceries</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="cu.c2h">Museums &amp; art</h4><ul>
+      <li data-i18n="cu.c2l1">Museo Nacional de Antropología (Chapultepec)</li>
+      <li data-i18n="cu.c2l2">Museo Frida Kahlo (Coyoacán, book ahead)</li>
+      <li data-i18n="cu.c2l3">Mural route in the historic center; Roma galleries</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="cu.c3h">Parks &amp; outdoors</h4><ul>
+      <li data-i18n="cu.c3l1">Chapultepec — lakes, forests, museums</li>
+      <li data-i18n="cu.c3l2">Parque México / Parque España (Condesa)</li>
+      <li data-i18n="cu.c3l3">Street cafés and bike routes across the central colonias</li>
+    </ul></div>
+  </div>
+
+  <h3 data-i18n="cu.h3">Day trips &amp; seasons</h3>
+  <table>
+    <tr><th data-i18n="cu.th1">Interest</th><th data-i18n="cu.th2">Ideas within reach</th></tr>
+    <tr><td data-i18n="cu.r1k">History &amp; archaeology</td><td data-i18n="cu.r1v">Teotihuacan pyramids (day trip, morning start recommended)</td></tr>
+    <tr><td data-i18n="cu.r2k">Towns &amp; crafts</td><td data-i18n="cu.r2v">Coyoacán and San Ángel on foot; markets and weekend art fairs</td></tr>
+    <tr><td data-i18n="cu.r3k">Climate escape</td><td data-i18n="cu.r3v">Hill towns and green spaces outside the city on hot smog days</td></tr>
+    <tr><td data-i18n="cu.r4k">Festival calendar</td><td data-i18n="cu.r4v">Independence Day (Sept), Día de Muertos (Oct–Nov), Guadalupe (Dec), major carnival dates — check local listings each year</td></tr>
+  </table>
+</section>
+
+<!-- EMERGENCY -->
+<section class="view" id="emergency">
+  <h2 class="section-title" data-i18n="e.title">Emergency Playbooks</h2>
+  <p class="section-lede" data-i18n="e.lede">Keep these sections bookmarked before you need them. Each playbook gives the order of operations in a stressful moment.</p>
+
+  <div class="figure"><img src="assets/emergency.jpg" alt="Modern hospital entrance"><figcaption data-i18n="e.cap">Identify your nearest hospital and clinic in week one, not during an emergency.</figcaption></div>
+
+  <div class="grid g2">
+    <div class="card"><h4 data-i18n="e.c1h">Medical issue</h4><ul>
+      <li data-i18n="e.c1l1"><b>Minor:</b> pharmacy consultorio (Farmacias del Ahorro / Guadalajara / Similares), walk-in, ~50–100 MXN.</li>
+      <li data-i18n="e.c1l2"><b>Urgent:</b> go to a private hospital emergency department — ABC, Ángeles, Médica Sur.</li>
+      <li data-i18n="e.c1l3"><b>Critical:</b> call 911 for ambulance; have insurance policy number and blood type saved offline.</li>
+      <li data-i18n="e.c1l4">Bring passport/resident card; keep policy documents accessible.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="e.c2h">Theft / lost documents</h4><ul>
+      <li data-i18n="e.c2l1"><b>Safe first:</b> move to a busy, lit location; do not chase anyone.</li>
+      <li data-i18n="e.c2l2"><b>Report:</b> file a report at the nearest Ministerio Público / fiscalía; needed for insurance and card replacement.</li>
+      <li data-i18n="e.c2l3"><b>Documents:</b> contact your embassy/consulate for passport replacement; keep digital copies ready.</li>
+      <li data-i18n="e.c2l4"><b>Cards:</b> freeze bank and ride-app cards immediately from another device.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="e.c3h">Earthquake</h4><ul>
+      <li data-i18n="e.c3l1">On the early-warning alert: drop, cover, hold on; stay away from windows and tall furniture.</li>
+      <li data-i18n="e.c3l2">After shaking stops: check yourself and others for injury, then gas, water and electric lines.</li>
+      <li data-i18n="e.c3l3">Keep footwear near the bed; identify the safest spot in each room on day one.</li>
+      <li data-i18n="e.c3l4">Expect phone networks to be busy; agree an offline meeting point with household members.</li>
+    </ul></div>
+    <div class="card"><h4 data-i18n="e.c4h">Transport incident</h4><ul>
+      <li data-i18n="e.c4l1">In a ride app: share the trip live with a contact; save driver and vehicle details.</li>
+      <li data-i18n="e.c4l2">If feeling unsafe: ask the driver to stop at a busy, lit location; call 911 if needed.</li>
+      <li data-i18n="e.c4l3">After any incident: screenshot records, note time and location, report through the app and authorities.</li>
+      <li data-i18n="e.c4l4">Never accept a street-hailed taxi; use authorized booth taxis or apps only.</li>
+    </ul></div>
+  </div>
+
+  <div class="warn" data-i18n="e.warn"><b>Emergency number: 911</b> (police, ambulance, fire). Interpreters may be available; keep your accommodation address written in Spanish and English offline.</div>
+</section>
+
+<!-- DIRECTORY -->
+<section class="view" id="directory">
+  <h2 class="section-title" data-i18n="di.title">Curated Directory</h2>
+  <p class="section-lede" data-i18n="di.lede">Categories to know when you arrive. Verify current locations, hours and coverage before relying on any listing; this directory is an orientation map, not an endorsement.</p>
+
+  <table>
+    <tr><th data-i18n="di.th1">Category</th><th data-i18n="di.th2">What to look for</th></tr>
+    <tr><td data-i18n="di.r1k">Private hospitals</td><td data-i18n="di.r1v">Hospital ABC (Observatorio / Santa Fe), Hospital Ángeles (multiple locations), Médica Sur (Tlalpan)</td></tr>
+    <tr><td data-i18n="di.r2k">Pharmacy chains</td><td data-i18n="di.r2v">Farmacias del Ahorro, Farmacias Guadalajara, Farmacias Similares — many with walk-in consultorios</td></tr>
+    <tr><td data-i18n="di.r3k">Ride apps</td><td data-i18n="di.r3v">Uber, DiDi, Cabify; DiDi often runs 10–20% below Uber</td></tr>
+    <tr><td data-i18n="di.r4k">Telecom</td><td data-i18n="di.r4v">Telcel, AT&amp;T Mexico — prepaid SIM at OXXO; compare eSIM options before landing</td></tr>
+    <tr><td data-i18n="di.r5k">Groceries</td><td data-i18n="di.r5v">Superama, Wal-Mart, Chedraui; local mercados for produce; Rappi for delivery</td></tr>
+    <tr><td data-i18n="di.r6k">Coworking</td><td data-i18n="di.r6v">Central Roma/Condesa/Juárez spaces; compare day passes and monthly desks before committing</td></tr>
+    <tr><td data-i18n="di.r7k">Consular</td><td data-i18n="di.r7v">Locate your own embassy or consulate contact and registration procedure before arrival</td></tr>
+  </table>
+</section>
+
+<!-- TEMPLATES -->
+<section class="view" id="templates">
+  <h2 class="section-title" data-i18n="t.title">Master Template Vault</h2>
+  <p class="section-lede" data-i18n="t.lede">All relocation spreadsheets in one place, plus two Vault-only templates for persona budgeting and emergency contacts. English and Chinese versions of each file are included.</p>
+
+  <div class="tpl"><div class="ic">👤</div><div class="body"><h4 data-i18n="t.c1h">Persona Budget Planner <span style="color:var(--gold-deep)">· Vault exclusive</span></h4><p data-i18n="t.c1p">Pre-structured budget by persona: remote worker, family, retiree, couple/solo.</p></div><div class="links"><a href="assets/templates/persona-budget.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/persona-budget-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">☎️</div><div class="body"><h4 data-i18n="t.c2h">Emergency Contacts Card <span style="color:var(--gold-deep)">· Vault exclusive</span></h4><p data-i18n="t.c2p">Fill in local emergency numbers, embassy, insurer, landlord and clinic contacts to keep offline.</p></div><div class="links"><a href="assets/templates/emergency-contacts.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/emergency-contacts-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">📄</div><div class="body"><h4 data-i18n="t.c3h">Document Checklist</h4><p data-i18n="t.c3p">Track identity, visa, civil documents, apostilles, translations and copies.</p></div><div class="links"><a href="assets/templates/document-checklist.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/document-checklist-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">🗓</div><div class="body"><h4 data-i18n="t.c4h">Relocation Timeline</h4><p data-i18n="t.c4p">Stage-by-stage tasks from six months out to settled-in.</p></div><div class="links"><a href="assets/templates/relocation-timeline.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/relocation-timeline-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">💰</div><div class="body"><h4 data-i18n="t.c5h">Budget Tracker</h4><p data-i18n="t.c5p">Estimated vs actual monthly costs across all categories.</p></div><div class="links"><a href="assets/templates/budget-tracker.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/budget-tracker-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <div class="tpl"><div class="ic">📋</div><div class="body"><h4 data-i18n="t.c6h">Rental Comparison</h4><p data-i18n="t.c6p">Score three listings side by side on location, price, transit and terms.</p></div><div class="links"><a href="assets/templates/rental-comparison.csv" download data-i18n="t.dl">Download CSV (EN)</a><a href="assets/templates/rental-comparison-zh.csv" download data-i18n="t.dlzh">Download CSV (ZH)</a></div></div>
+  <p style="font-size:12.5px;color:var(--muted);margin-top:4px" data-i18n="t.zhnote">Each template above includes both English and Chinese versions.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">MERKING DIGITAL TECHNOLOGY</div>
+    <div data-i18n="f.line">The Expat Living Vault: Mexico City · Product 03 in the Mexico City living series.</div>
+    <div class="disclaimer" data-i18n="f.disc"><b>Important:</b> This Vault provides general educational information for orientation and planning. It is not immigration, legal, tax, medical, insurance or financial advice. Listings, fees, routes, hospitals and regulations change — verify current details with official sources, your insurer and licensed professionals before acting. Emergency services in Mexico: 911.</div>
+  </div>
+</footer>
+
+<script>
+const memoryStore = {};
+const safeStore = {
+  get(k){ try { const v = localStorage.getItem(k); return v === null ? null : v; } catch(e){ return memoryStore[k] ?? null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){ memoryStore[k]=v; } },
+  remove(k){ try { localStorage.removeItem(k); } catch(e){ delete memoryStore[k]; } }
+};
+
+const ZH = {
+  "tag":"产品 03 · 高端生活库",
+  "eyebrow":"墨西哥城完整生活系统 · 6 个月访问期",
+  "title":"外籍人士生活库：墨西哥城",
+  "sub":"高端一体化系统，助你落地、安顿并在墨西哥城安定生活：两套核心指南、四类人群方案、12 个月路线图、街区档案、文化指南、应急剧本和完整模板库。",
+  "meta1":"形式：<b>高端数字生活库</b>",
+  "meta2":"包含：<b>2 套核心指南 · 4 份方案 · 12 个月路线图 · 8 份档案 · 应急系统 · 模板</b>",
+  "meta3":"访问期限：<b>购买后 6 个月</b>",
+  "nav.welcome":"欢迎", "nav.bundle":"包含内容", "nav.personas":"人群方案", "nav.roadmap":"12 个月路线图",
+  "nav.dossiers":"街区档案", "nav.culture":"文化与秘境", "nav.emergency":"应急剧本", "nav.directory":"精选名录", "nav.templates":"模板库",
+  "w.title":"欢迎进入生活库",
+  "w.lede":"生活库把自信迁居墨西哥城所需的一切整合进一套高端系统——按阶段、人群和情境组织，让你始终清楚下一步。",
+  "w.audio":"▶ 生活库欢迎音频 · 35 秒",
+  "w.b1h":"含两套核心指南", "w.b1p":"《抵达伴侣》与《迁居蓝图》完整版本。",
+  "w.b2h":"四类人群方案", "w.b2p":"远程工作者、家庭、退休人士、情侣/独居——各自的重点与预算。",
+  "w.b3h":"逐月路线图", "w.b3p":"从抵达第一周到全面融入、安定生活。",
+  "w.b4h":"街区档案", "w.b4p":"深度档案：配套、短板以及适合人群。",
+  "w.tip":"<b>使用方式：</b>先在路线图中定位自己所处阶段，打开匹配你情况的方案；把应急剧本和名录加入收藏，需要时随时调取。",
+  "tr.h":"你可以期待什么",
+  "tr.h1":"6 个月访问期", "tr.p1":"购买后生活库中心开放六个月；访问链接与文件通过邮箱送达。",
+  "tr.h2":"中英双语", "tr.p2":"页面语言可随时切换；每份指南和模板均含英文与中文版本。",
+  "tr.h3":"即时数字交付", "tr.p3":"高端自助数字系统，无实体寄送；访问与技术问题按 Whop 政策处理。",
+  "b.title":"包含内容",
+  "b.lede":"生活库内所有内容均为数字形式，即时交付。不含一对一咨询；本系统按自助、易跟随的方式设计。",
+  "b.c1place":"核心 · 产品 01", "b.c1h":"墨西哥城抵达伴侣",
+  "b.c1p":"头 72 小时行动手册、八个街区档案、交通与金钱指南、饮食与日常、安全与健康、四组西语音频短语包、预算规划器和抵达清单。",
+  "b.c2place":"核心 · 产品 02", "b.c2h":"墨西哥城迁居蓝图",
+  "b.c2p":"六模块迁居课程：适配评估、签证居留路线、找房、日常开通、金钱与法律基础、头 90 天——含四份电子表格模板。",
+  "b.c3place":"专属 · 仅生活库", "b.c3h":"四份人群方案",
+  "b.c3p":"为远程工作者、家庭、退休人士、情侣/独居定制的重点、街区选择、预算结构和注意事项。",
+  "b.c4place":"专属 · 仅生活库", "b.c4h":"12 个月生活路线图",
+  "b.c4p":"四个阶段：安顿、深入、融入、安定——每季度附有目标、里程碑和复盘节点。",
+  "b.c5place":"专属 · 仅生活库", "b.c5h":"文化与秘境",
+  "b.c5p":"集市、博物馆、公园、一日游和节庆日历，帮你建立社交与文化生活，而不只是一个住处。",
+  "b.c6place":"专属 · 仅生活库", "b.c6h":"应急剧本与名录",
+  "b.c6p":"医疗问题、失窃或证件遗失、地震和交通事件的分步应对，加上分类精选名录。",
+  "p.title":"人群方案",
+  "p.lede":"搬家没有万能方案。下面每份方案聚焦你所处情况中最关键的决策。",
+  "p.cap":"远程工作者方案围绕网络、共享办公和街区节奏展开。",
+  "p.c1place":"方案 A", "p.c1h":"远程工作者",
+  "p.c1l1":"<b>重点：</b>稳定 wifi、安静工作空间、咖啡馆/共享办公密度、与美国中部同时区。",
+  "p.c1l2":"<b>街区选择：</b>Roma Norte、Condesa、Juárez。",
+  "p.c1l3":"<b>预算结构：</b>房租和共享办公占大头；外食可灵活调整。",
+  "p.c1l4":"<b>注意事项：</b>签约前核实包含的网速；备一张共享办公日票；留意视频通话的光线和背景。",
+  "p.c2place":"方案 B", "p.c2h":"家庭",
+  "p.c2l1":"<b>重点：</b>就近学校、安静街道、公园、私立医疗、安全感。",
+  "p.c2l2":"<b>街区选择：</b>Polanco、Del Valle、Coyoacán、Condesa。",
+  "p.c2l3":"<b>预算结构：</b>学费和更大住房；买菜与活动支出稳定。",
+  "p.c2l4":"<b>注意事项：</b>先定学校再找房；签约前规划两条日常路线；确认入学截止日期和材料。",
+  "p.c3place":"方案 C", "p.c3h":"退休人士",
+  "p.c3l1":"<b>重点：</b>步行可达的日常服务、医疗便利、安静、固定收入的购买力。",
+  "p.c3l2":"<b>街区选择：</b>Coyoacán、Del Valle、Condesa、Narvarte。",
+  "p.c3l3":"<b>预算结构：</b>舒适中端；医疗保险按年龄上浮。",
+  "p.c3l4":"<b>注意事项：</b>尽早对比私立保险；留意海拔和步行坡度；确认附近药店诊所和医院。",
+  "p.c4place":"方案 D", "p.c4h":"情侣 / 独居",
+  "p.c4l1":"<b>重点：</b>社交场景、美食、步行可达的夜生活、便于探索。",
+  "p.c4l2":"<b>街区选择：</b>Roma Norte、Condesa、Juárez、Narvarte。",
+  "p.c4l3":"<b>预算结构：</b>灵活；餐饮和体验是主要变量。",
+  "p.c4l4":"<b>注意事项：</b>独居女性夜间在地铁和街头需格外谨慎；第一个月内建立本地社交节奏。",
+  "r.title":"12 个月生活路线图",
+  "r.lede":"按季度推进，从抵达时的忙乱走向安定、融入的生活。音频总结逐阶段讲解。",
+  "r.audio":"▶ 音频总结 · 12 个月路线图 · 55 秒",
+  "r.p1":"第 1–3 月<br>安顿", "r.s1h":"落实基础",
+  "r.s1p":"通讯、现金、交通卡、住房签约、INM 居留卡办理、保险生效、最近服务点摸清。目标：日常无需反复翻译或查资料即可运转。",
+  "r.p2":"第 4–6 月<br>深入", "r.s2h":"走出自己的街区认识城市",
+  "r.s2p":"探索周边区域，建立常去的固定去处，加入课程、共享办公或社群，尝试市中心以外的周末出行。对照实际支出复盘预算，调整住房或习惯。",
+  "r.p3":"第 7–9 月<br>融入", "r.s3h":"扎下本地根基",
+  "r.s3p":"稳定社交圈，与邻居和摊主形成日常往来，在真实场景中练习西语，安排长期服务（医生、牙医、健身）。评估现有住房是否仍适合安定后的生活。",
+  "r.p4":"第 10–12 月<br>安定", "r.s4h":"把这里变成自己的家",
+  "r.s4p":"布置居家，规划回国探亲或区域内旅行，评估居留续签时间和长期选项，固化让日常平静安全的习惯。",
+  "d.title":"街区档案",
+  "d.lede":"八份档案包含气质、配套、短板和适合居民类型。租金为 2026 年一居室带家具月租的美元估算区间。",
+  "d.c1p":"外籍人士与创意中心：装饰艺术街道、咖啡馆、画廊、梅斯卡尔酒吧，国际人群最密集。非常适合步行；租金和游客压力是代价。",
+  "d.c1l1":"<b>配套：</b>共享办公、精品咖啡、国际餐饮、地铁可达", "d.c1l2":"<b>短板：</b>较贵；部分街道游客感重", "d.c1l3":"<b>适合：</b>初来者、远程工作者、社交型独居",
+  "d.c2p":"环绕墨西哥公园和西班牙公园的绿树住宅区；装饰艺术风、可养狗，比 Roma 稍安静，咖啡馆文化浓厚。",
+  "d.c2l1":"<b>配套：</b>公园、面包店、设计店、夜晚安静", "d.c2l2":"<b>短板：</b>租金与 Roma 持平；周末夜生活外溢", "d.c2l3":"<b>适合：</b>情侣、家庭、看重步行便利者",
+  "d.c3p":"高档使馆区：奢侈品零售、高级餐厅、整洁安静的街道，紧邻查普尔特佩克公园。安全感最强、也最贵的选择。",
+  "d.c3l1":"<b>配套：</b>使馆、高端服务、博物馆、商场", "d.c3l2":"<b>短板：</b>非常贵；夜生活低调", "d.c3l3":"<b>适合：</b>高管、资深外籍人士、家庭",
+  "d.c4p":"位于改革大道旁、正在更新的中心地段；比 Roma 性价比高，交通便利，Zona Rosa 附近餐厅酒吧热闹。",
+  "d.c4l1":"<b>配套：</b>Reforma 走廊、地铁、平价餐饮", "d.c4l2":"<b>短板：</b>质量逐段不同——需实地查看", "d.c4l3":"<b>适合：</b>预算有限的中心区居民",
+  "d.c5p":"小镇般的南部：石板广场、彩色集市、弗里达·卡罗印记、画廊，墨西哥本地气息浓厚。租金更低，向北通勤较长。",
+  "d.c5l1":"<b>配套：</b>集市、博物馆、咖啡馆、绿地", "d.c5l2":"<b>短板：</b>到中心区通勤；共享办公较少", "d.c5l3":"<b>适合：</b>家庭、退休人士、文化导向长住者",
+  "d.c6p":"稳重的中产阶级住宅区：绿树街道、日常配套、夜晚安静，是全城安全感最高的区之一。国际氛围有限。",
+  "d.c6l1":"<b>配套：</b>超市、公园、本地商业", "d.c6l2":"<b>短板：</b>外籍配套和深夜选择较少", "d.c6l3":"<b>适合：</b>家庭、退休人士、安静性价比追求者",
+  "d.c7p":"本地人偏爱，以塔可店和地道日常闻名；地铁和 Metrobús 便利，餐厅更便宜，精致度不如核心区。",
+  "d.c7l1":"<b>配套：</b>美食场景、交通、本地集市", "d.c7l2":"<b>短板：</b>街头西语更多；少经打磨", "d.c7l3":"<b>适合：</b>性价比长住者、美食爱好者",
+  "d.c8p":"Roma 更安静、更居家的邻居；交通同样方便，带有本地质感、价格更低。住一个月以上的理性选择。",
+  "d.c8l1":"<b>配套：</b>街区商业、交通、附近公园", "d.c8l2":"<b>短板：</b>需遵守大城市常规街头安全注意", "d.c8l3":"<b>适合：</b>预算有限的长租者",
+  "cu.title":"文化与秘境",
+  "cu.lede":"一份像本地人一样安排闲暇的精选地图——集市、博物馆、公园、一日游，以及锚定本地生活的节庆日历。",
+  "cu.cap":"庭院、壁画和瓷砖街道是这座城日常视觉语言的一部分。",
+  "cu.c1h":"集市与美食大厅",
+  "cu.c1l1":"Mercado de Medellín（Roma）——生鲜、香料、小吃摊", "cu.c1l2":"Mercado de Coyoacán——手工艺品、水果、街头美食", "cu.c1l3":"每个街区的本地集市解决每周买菜",
+  "cu.c2h":"博物馆与艺术",
+  "cu.c2l1":"国家人类学博物馆（查普尔特佩克）", "cu.c2l2":"弗里达·卡罗博物馆（Coyoacán，需提前预约）", "cu.c2l3":"历史中心壁画路线；Roma 画廊",
+  "cu.c3h":"公园与户外",
+  "cu.c3l1":"查普尔特佩克——湖泊、森林、博物馆", "cu.c3l2":"墨西哥公园 / 西班牙公园（Condesa）", "cu.c3l3":"中心各街区的街头咖啡馆与骑行路线",
+  "cu.h3":"一日游与季节", "cu.th1":"兴趣", "cu.th2":"可达选择",
+  "cu.r1k":"历史与考古", "cu.r1v":"特奥蒂瓦坎金字塔（一日游，建议上午出发）",
+  "cu.r2k":"小镇与手作", "cu.r2v":"步行逛 Coyoacán 和 San Ángel；集市与周末艺术市集",
+  "cu.r3k":"避暑避霾", "cu.r3v":"炎热雾霾天去城外山镇和绿地",
+  "cu.r4k":"节庆日历", "cu.r4v":"独立日（9 月）、亡灵节（10–11 月）、瓜达卢佩节（12 月）、主要狂欢节日期——每年查阅本地通告",
+  "e.title":"应急剧本",
+  "e.lede":"在需要之前先把这些章节加入收藏。每份剧本给出紧张时刻的处理顺序。",
+  "e.cap":"第一周就确定最近的医院和诊所，而不是等到应急时。",
+  "e.c1h":"医疗问题",
+  "e.c1l1":"<b>小毛病：</b>药店诊所（Farmacias del Ahorro / Guadalajara / Similares），免预约，约 50–100 比索。",
+  "e.c1l2":"<b>紧急：</b>前往私立医院急诊——ABC、Ángeles、Médica Sur。",
+  "e.c1l3":"<b>危重：</b>拨打 911 叫救护车；保险单号和血型离线保存好。",
+  "e.c1l4":"携带护照/居留卡；保单文件放在易取处。",
+  "e.c2h":"失窃 / 证件遗失",
+  "e.c2l1":"<b>先保安全：</b>转移到热闹有灯的地点；不要追赶对方。",
+  "e.c2l2":"<b>报案：</b>到最近的 Ministerio Público / fiscalía 报案；保险和补卡需要报案记录。",
+  "e.c2l3":"<b>证件：</b>联系使馆/领馆办理护照补发；备好电子副本。",
+  "e.c2l4":"<b>卡片：</b>立即用另一台设备冻结银行卡和打车软件卡片。",
+  "e.c3h":"地震",
+  "e.c3l1":"预警响起：蹲下、掩护、抓牢；远离窗户和高大家具。",
+  "e.c3l2":"晃动停止后：先检查自己和他人有无受伤，再检查燃气、水管和电线。",
+  "e.c3l3":"鞋子放在床边；第一天就找出每个房间最安全的位置。",
+  "e.c3l4":"电话网络可能繁忙；与家人约定一个离线集合点。",
+  "e.c4h":"交通事件",
+  "e.c4l1":"打车软件行程：把行程实时分享给联系人；保存司机和车辆信息。",
+  "e.c4l2":"感到不安全：请司机在热闹有灯的地点停车；必要时拨打 911。",
+  "e.c4l3":"事件发生后：截图记录，记下时间和地点，通过软件和有关部门报案。",
+  "e.c4l4":"绝不乘坐街边拦停的出租车；只使用正规出租亭或打车软件。",
+  "e.warn":"<b>紧急电话：911</b>（警察、救护车、消防）。可能提供翻译；住宿地址以西英双语离线写好保存。",
+  "di.title":"精选名录",
+  "di.lede":"抵达后需要了解的类别。参考任何名录前，核实当前位置、营业时间和覆盖范围；本名录仅为指引，不构成推荐背书。",
+  "di.th1":"类别", "di.th2":"需要留意的信息",
+  "di.r1k":"私立医院", "di.r1v":"Hospital ABC（Observatorio / Santa Fe）、Hospital Ángeles（多院区）、Médica Sur（Tlalpan）",
+  "di.r2k":"连锁药店", "di.r2v":"Farmacias del Ahorro、Farmacias Guadalajara、Farmacias Similares——多数设有免预约诊所",
+  "di.r3k":"打车软件", "di.r3v":"Uber、DiDi、Cabify；DiDi 通常比 Uber 低 10–20%",
+  "di.r4k":"通讯", "di.r4v":"Telcel、AT&T Mexico——OXXO 购买预付费 SIM；落地前对比 eSIM 选项",
+  "di.r5k":"买菜", "di.r5v":"Superama、Wal-Mart、Chedraui；本地集市买生鲜；Rappi 配送",
+  "di.r6k":"共享办公", "di.r6v":"Roma/Condesa/Juárez 中心区空间；承诺前对比日票和月工位价格",
+  "di.r7k":"领事", "di.r7v":"抵达前查清本国使馆/领馆联系方式和登记流程",
+  "t.title":"总模板库",
+  "t.lede":"所有迁居电子表格集中于此，另加两份生活库专属模板：人群预算和紧急联系人。每份文件均含英文与中文两个版本。",
+  "t.c1h":"人群预算规划器 <span style='color:var(--gold-deep)'>· 生活库专属</span>", "t.c1p":"按人群预设结构：远程工作者、家庭、退休人士、情侣/独居。",
+  "t.c2h":"紧急联系卡 <span style='color:var(--gold-deep)'>· 生活库专属</span>", "t.c2p":"填入本地紧急电话、使馆、保险方、房东和诊所联系方式，离线保存。",
+  "t.c3h":"证件清单", "t.c3p":"跟踪身份、签证、民事文件、海牙认证、翻译件和副本。",
+  "t.c4h":"迁居时间线", "t.c4p":"从提前六个月到安顿完成的分阶段任务。",
+  "t.c5h":"预算跟踪表", "t.c5p":"各类别预估与实际月度开销对比。",
+  "t.c6h":"租房对比表", "t.c6p":"在地段、价格、交通和条款上并排对比三个房源。",
+  "t.dl":"下载 CSV（英）", "t.dlzh":"下载 CSV（中文）", "t.zhnote":"每份模板上方均附英文与中文两个版本。",
+  "f.line":"外籍人士生活库：墨西哥城 · 墨西哥城生活系列产品 03。",
+  "f.disc":"<b>重要提示：</b>本生活库提供通用教育信息，用于指引和规划，不构成移民、法律、税务、医疗、保险或财务建议。名录、费用、路线、医院和规定会变动——行动前请通过官方渠道、保险方和持牌专业人士核实最新细节。墨西哥紧急服务电话：911。"
+};
+
+const chips=document.querySelectorAll('.chips button');
+const views=document.querySelectorAll('.view');
+function show(id){views.forEach(v=>v.classList.toggle('active',v.id===id));chips.forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});}
+chips.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+
+let lang = safeStore.get('mdt_lang') || 'en';
+function applyLang(l){
+  lang = l; safeStore.set('mdt_lang', l);
+  document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    if(l === 'zh'){
+      if(el.dataset.orig === undefined) el.dataset.orig = el.innerHTML;
+      el.innerHTML = ZH[el.dataset.i18n] ?? el.dataset.orig;
+    } else if(el.dataset.orig !== undefined){
+      el.innerHTML = el.dataset.orig;
+    }
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+}
+applyLang(lang);
+</script>
+</body>
+</html>
