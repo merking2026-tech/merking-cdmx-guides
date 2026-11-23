@@ -12,11 +12,12 @@
 
 每个目录下 `index.html` 为产品主页，`assets/` 内含配图、音频（MP3）和模板（CSV，EN + ZH）。
 
-## Pages 地址（发布后回填）
+## Pages 地址（已发布）
 
-- P1：`https://<GitHub用户名>.github.io/<仓库名>/p1/`
-- P2：`https://<GitHub用户名>.github.io/<仓库名>/p2/`
-- P3：`https://<GitHub用户名>.github.io/<仓库名>/p3/`
+- 仓库：`merking2026-tech/merking-cdmx-guides`（公开，Pages 由 `main` 分支根目录部署）
+- P1：`https://merking2026-tech.github.io/merking-cdmx-guides/p1/`
+- P2：`https://merking2026-tech.github.io/merking-cdmx-guides/p2/`
+- P3：`https://merking2026-tech.github.io/merking-cdmx-guides/p3/`
 
 ## 说明
 
